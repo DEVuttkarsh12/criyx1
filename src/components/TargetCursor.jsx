@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useMemo, useRef } from 'react';
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { gsap } from 'gsap';
 import './TargetCursor.css';
 
@@ -36,6 +36,20 @@ const getContainingBlockOffset = (block) => {
   return { x: rect.left + block.clientLeft, y: rect.top + block.clientTop };
 };
 
+const shouldDisableCursor = () => {
+  if (typeof window === 'undefined') {
+    return false;
+  }
+
+  const coarsePointer = window.matchMedia('(pointer: coarse)').matches;
+  const noHover = window.matchMedia('(hover: none)').matches;
+  const narrowViewport = window.matchMedia('(max-width: 900px)').matches;
+  const hasTouchScreen =
+    'ontouchstart' in window || navigator.maxTouchPoints > 0;
+
+  return coarsePointer || noHover || narrowViewport || hasTouchScreen;
+};
+
 export default function TargetCursor({
   targetSelector = '.cursor-target',
   spinDuration = 2,
@@ -43,6 +57,7 @@ export default function TargetCursor({
   hoverDuration = 0.2,
   parallaxOn = true,
 }) {
+  const [isMobile, setIsMobile] = useState(() => shouldDisableCursor());
   const cursorRef = useRef(null);
   const cornersRef = useRef(null);
   const spinTl = useRef(null);
@@ -53,22 +68,6 @@ export default function TargetCursor({
   const tickerFnRef = useRef(null);
   const activeStrengthRef = useRef(0);
 
-  const isMobile = useMemo(() => {
-    if (typeof window === 'undefined') {
-      return false;
-    }
-
-    const hasTouchScreen =
-      'ontouchstart' in window || navigator.maxTouchPoints > 0;
-    const isSmallScreen = window.innerWidth <= 768;
-    const userAgent = navigator.userAgent || navigator.vendor || window.opera;
-    const mobileRegex =
-      /android|webos|iphone|ipad|ipod|blackberry|iemobile|opera mini/i;
-    const isMobileUserAgent = mobileRegex.test(userAgent.toLowerCase());
-
-    return (hasTouchScreen && isSmallScreen) || isMobileUserAgent;
-  }, []);
-
   const constants = useMemo(
     () => ({
       borderWidth: 3,
@@ -76,6 +75,34 @@ export default function TargetCursor({
     }),
     [],
   );
+
+  useEffect(() => {
+    if (typeof window === 'undefined') {
+      return undefined;
+    }
+
+    const mediaQueries = [
+      window.matchMedia('(pointer: coarse)'),
+      window.matchMedia('(hover: none)'),
+      window.matchMedia('(max-width: 900px)'),
+    ];
+    const syncCursorState = () => {
+      setIsMobile(shouldDisableCursor());
+    };
+
+    syncCursorState();
+    mediaQueries.forEach((query) => {
+      query.addEventListener('change', syncCursorState);
+    });
+    window.addEventListener('resize', syncCursorState);
+
+    return () => {
+      mediaQueries.forEach((query) => {
+        query.removeEventListener('change', syncCursorState);
+      });
+      window.removeEventListener('resize', syncCursorState);
+    };
+  }, []);
 
   const moveCursor = useCallback((x, y) => {
     if (!cursorRef.current) {

@@ -76,9 +76,25 @@
   z-index: 24;
 }
 
+.sm-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 23;
+  background: rgba(4, 4, 4, 0.52);
+  backdrop-filter: blur(12px);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 180ms ease;
+}
+
 .sm-prelayer {
   position: absolute;
   inset: 0;
+}
+
+.staggered-menu-wrapper[data-open] .sm-backdrop {
+  opacity: 1;
+  pointer-events: auto;
 }
 
 .staggered-menu-panel {
@@ -86,7 +102,7 @@
   top: 0;
   right: 0;
   width: clamp(320px, 38vw, 460px);
-  height: 100vh;
+  height: 100dvh;
   padding: calc(var(--header-height) + 28px) 28px 28px;
   background:
     linear-gradient(180deg, rgba(255, 255, 255, 0.045) 0%, rgba(255, 255, 255, 0.02) 100%),
@@ -97,6 +113,8 @@
     inset 1px 0 0 rgba(255, 255, 255, 0.05);
   backdrop-filter: blur(24px) saturate(138%);
   overflow-y: auto;
+  overscroll-behavior: contain;
+  -webkit-overflow-scrolling: touch;
   z-index: 26;
   pointer-events: auto;
   opacity: 0;
@@ -106,7 +124,7 @@
   min-height: 100%;
   display: flex;
   flex-direction: column;
-  gap: 28px;
+  gap: 36px;
 }
 
 .sm-panel-list {
@@ -115,7 +133,7 @@
   padding: 0;
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 16px;
 }
 
 .sm-panel-itemWrap {
@@ -167,12 +185,12 @@
 
 .sm-secondary {
   margin-top: auto;
-  padding-top: 16px;
+  padding-top: 22px;
   border-top: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .sm-secondary-title {
-  margin: 0 0 14px;
+  margin: 0 0 18px;
   color: rgba(255, 255, 255, 0.62);
   font-size: 13px;
   font-weight: 600;
@@ -183,27 +201,67 @@
 .sm-secondary-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 10px;
+  gap: 12px;
+}
+
+.sm-secondary-item {
+  min-width: 0;
 }
 
 .sm-secondary-link {
-  display: block;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 10px 12px;
   min-height: 100%;
-  padding: 12px 14px;
+  padding: 14px 16px;
   border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 14px;
-  background: rgba(255, 255, 255, 0.025);
+  border-radius: 16px;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.045) 0%, rgba(255, 255, 255, 0.015) 100%),
+    rgba(255, 255, 255, 0.025);
   color: rgba(255, 255, 255, 0.84);
   text-decoration: none;
-  font-size: 14px;
-  font-weight: 500;
   line-height: 1.35;
   letter-spacing: -0.02em;
   transition:
     border-color 180ms ease,
     background-color 180ms ease,
     color 180ms ease,
-    transform 180ms ease;
+    transform 180ms ease,
+    box-shadow 180ms ease;
+}
+
+.sm-secondary-linkMeta {
+  grid-column: 1 / -1;
+  color: rgba(255, 255, 255, 0.46);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.sm-secondary-linkLabel {
+  min-width: 0;
+  color: #fff;
+  font-size: 15px;
+  font-weight: 500;
+}
+
+.sm-secondary-linkArrow {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.04);
+  color: rgba(255, 255, 255, 0.88);
+  font-size: 14px;
+  transition:
+    transform 180ms ease,
+    border-color 180ms ease,
+    background-color 180ms ease;
 }
 
 .sm-secondary-link:hover,
@@ -212,6 +270,14 @@
   background: rgba(167, 84, 37, 0.08);
   color: #fff;
   transform: translateY(-1px);
+  box-shadow: 0 18px 36px -28px rgba(167, 84, 37, 0.45);
+}
+
+.sm-secondary-link:hover .sm-secondary-linkArrow,
+.sm-secondary-link:focus-visible .sm-secondary-linkArrow {
+  transform: translate(1px, -1px);
+  border-color: rgba(167, 84, 37, 0.5);
+  background: rgba(167, 84, 37, 0.14);
 }
 
 @media (max-width: 1024px) {
@@ -222,13 +288,20 @@
 }
 
 @media (max-width: 640px) {
+  .sm-backdrop {
+    background: rgba(2, 2, 2, 0.7);
+    backdrop-filter: blur(16px);
+  }
+
   .sm-prelayers,
   .staggered-menu-panel {
     width: 100vw;
   }
 
   .staggered-menu-panel {
-    padding: calc(var(--header-height) + 24px) 20px 20px;
+    background: rgba(8, 8, 8, 0.98);
+    box-shadow: none;
+    padding: calc(var(--header-height) + 30px) 20px 24px;
   }
 
   .sm-panel-item {

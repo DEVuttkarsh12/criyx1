@@ -365,6 +365,41 @@ export default function StaggeredMenu({
     };
   }, [closeMenu, closeOnClickAway, open]);
 
+  useEffect(() => {
+    if (!open) {
+      return undefined;
+    }
+
+    const handleEscape = (event) => {
+      if (event.key === 'Escape') {
+        closeMenu();
+      }
+    };
+
+    document.addEventListener('keydown', handleEscape);
+
+    return () => {
+      document.removeEventListener('keydown', handleEscape);
+    };
+  }, [closeMenu, open]);
+
+  useEffect(() => {
+    if (!open) {
+      return undefined;
+    }
+
+    const originalBodyOverflow = document.body.style.overflow;
+    const originalDocumentOverflow = document.documentElement.style.overflow;
+
+    document.body.style.overflow = 'hidden';
+    document.documentElement.style.overflow = 'hidden';
+
+    return () => {
+      document.body.style.overflow = originalBodyOverflow;
+      document.documentElement.style.overflow = originalDocumentOverflow;
+    };
+  }, [open]);
+
   const renderNavLink = (item, classNameValue, content) => {
     if (isExternalLink(item.link)) {
       return (
@@ -403,6 +438,11 @@ export default function StaggeredMenu({
           />
         ))}
       </div>
+      <div
+        aria-hidden="true"
+        className="sm-backdrop"
+        onClick={closeMenu}
+      />
 
       <button
         ref={toggleBtnRef}
@@ -457,7 +497,19 @@ export default function StaggeredMenu({
               <div className="sm-secondary-grid">
                 {secondaryItems.map((item, index) => (
                   <div className="sm-secondary-item" key={`${item.label}-${index}`}>
-                    {renderNavLink(item, 'sm-secondary-link', item.label)}
+                    {renderNavLink(
+                      item,
+                      'sm-secondary-link',
+                      <>
+                        <span className="sm-secondary-linkMeta">
+                          Product {String(index + 1).padStart(2, '0')}
+                        </span>
+                        <span className="sm-secondary-linkLabel">{item.label}</span>
+                        <span className="sm-secondary-linkArrow" aria-hidden="true">
+                          ↗
+                        </span>
+                      </>,
+                    )}
                   </div>
                 ))}
               </div>
