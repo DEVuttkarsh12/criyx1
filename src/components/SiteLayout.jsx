@@ -6,7 +6,7 @@ import SiteHeader from './SiteHeader';
 import TargetCursor from './TargetCursor';
 
 const LOADER_DURATION_MS = 2200;
-const LOADER_EXIT_MS = 320;
+const LOADER_EXIT_MS = 820;
 
 export default function SiteLayout() {
   const location = useLocation();
