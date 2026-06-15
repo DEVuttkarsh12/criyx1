@@ -90,6 +90,11 @@ export default function SiteLayout() {
           className={`loaderOverlay${isExperienceReady ? ' loaderOverlay--exit' : ''}`}
           aria-hidden="true"
         >
+          <div className="loaderOverlay__ash">
+            {Array.from({ length: 12 }).map((_, index) => (
+              <span className="loaderOverlay__ashParticle" key={index} />
+            ))}
+          </div>
           <div className="loaderOverlay__content">
             <img className="loaderOverlay__logo" src={brandLogo} alt="" />
             <p className="loaderOverlay__wordmark">CRIYX</p>
