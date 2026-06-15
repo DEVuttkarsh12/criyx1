@@ -3,6 +3,7 @@ import { Outlet, useLocation } from 'react-router-dom';
 import backgroundVideo from '../../asset/untitled_project_remix_scene.mp4';
 import brandLogo from '../../file.jpeg';
 import SiteHeader from './SiteHeader';
+import TargetCursor from './TargetCursor';
 
 const LOADER_DURATION_MS = 2200;
 const LOADER_EXIT_MS = 320;
@@ -77,6 +78,13 @@ export default function SiteLayout() {
 
   return (
     <main className="app">
+      <TargetCursor
+        targetSelector=".brand, .siteNav__link, .button, .techCard, .statCard, .whyCard, .proofCard, .detailCard, .serviceCard, .capabilityCard, .visualSlide, .spotlightPanel, .processNode, .processStage, .faqItem__summary"
+        spinDuration={2.4}
+        hideDefaultCursor={true}
+        hoverDuration={0.18}
+        parallaxOn={true}
+      />
       {isLoaderVisible ? (
         <div
           className={`loaderOverlay${isExperienceReady ? ' loaderOverlay--exit' : ''}`}
