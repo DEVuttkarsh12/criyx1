@@ -82,23 +82,18 @@ export default function SiteLayout() {
           className={`loaderOverlay${isExperienceReady ? ' loaderOverlay--exit' : ''}`}
           aria-hidden="true"
         >
-          <div className="loaderOverlay__glow loaderOverlay__glow--primary" />
-          <div className="loaderOverlay__glow loaderOverlay__glow--secondary" />
-          <div className="loaderOverlay__panel">
-            <div className="loaderOverlay__logoShell">
-              <img className="loaderOverlay__logo" src={brandLogo} alt="" />
-            </div>
-            <p className="loaderOverlay__eyebrow">Launching the Criyx experience</p>
+          <div className="loaderOverlay__content">
+            <img className="loaderOverlay__logo" src={brandLogo} alt="" />
             <p className="loaderOverlay__wordmark">CRIYX</p>
+            <div className="loaderOverlay__status">
+              <span className="loaderOverlay__label">Loading</span>
+              <span className="loaderOverlay__value">{loaderProgress}%</span>
+            </div>
             <div className="loaderOverlay__meter" role="presentation">
               <span
                 className="loaderOverlay__meterFill"
                 style={{ width: `${loaderProgress}%` }}
               />
-            </div>
-            <div className="loaderOverlay__status">
-              <span>Preparing the interface</span>
-              <span>{loaderProgress}%</span>
             </div>
           </div>
         </div>
