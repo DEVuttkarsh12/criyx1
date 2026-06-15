@@ -1,4 +1,4 @@
-import { Link, useLocation } from 'react-router-dom';
+import { Link, NavLink, useLocation } from 'react-router-dom';
 import brandLogo from '../../file.jpeg';
 import { navItems } from '../data/siteContent';
 
@@ -14,27 +14,25 @@ export default function SiteHeader() {
         <ul className="siteNav__list">
           {navItems.map((item) => (
             <li key={item.label}>
-              <a
-                className={`siteNav__link${location.pathname === item.to ? ' siteNav__link--active' : ''}`}
-                href={item.to}
-                target="_blank"
-                rel="noreferrer"
+              <NavLink
+                className={({ isActive }) =>
+                  `siteNav__link${isActive ? ' siteNav__link--active' : ''}`
+                }
+                to={item.to}
               >
                 {item.label}
-              </a>
+              </NavLink>
             </li>
           ))}
         </ul>
       </nav>
-      <a
+      <Link
         className={`button button--accent siteHeader__cta${location.pathname === '/contact' ? ' button--active' : ''}`}
-        href="/contact"
-        target="_blank"
-        rel="noreferrer"
+        to="/contact"
       >
         Contact Us
         <span aria-hidden="true">-&gt;</span>
-      </a>
+      </Link>
     </header>
   );
 }
