@@ -7,6 +7,7 @@ import FaqPage from './pages/FaqPage';
 import FeaturesPage from './pages/FeaturesPage';
 import HomePage from './pages/HomePage';
 import ProcessPage from './pages/ProcessPage';
+import ProductPage from './pages/ProductPage';
 import ServicesPage from './pages/ServicesPage';
 import WhyUsPage from './pages/WhyUsPage';
 
@@ -45,6 +46,7 @@ export default function App() {
           <Route path="/faq" element={<FaqPage />} />
           <Route path="/features" element={<FeaturesPage />} />
           <Route path="/process" element={<ProcessPage />} />
+          <Route path="/products/:productSlug" element={<ProductPage />} />
           <Route path="/services" element={<ServicesPage />} />
           <Route path="/why-us" element={<WhyUsPage />} />
         </Route>

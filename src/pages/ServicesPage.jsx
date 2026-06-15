@@ -4,6 +4,7 @@ import agentsVisual from '../assets/service-agents-live.png';
 import appsVisual from '../assets/service-apps-live.png';
 import voiceVisual from '../assets/service-voice-live.png';
 import {
+  productCatalog,
   serviceCategories,
   serviceDeliveryModels,
   serviceHighlights,
@@ -42,6 +43,36 @@ export default function ServicesPage() {
               See our process
             </Link>
           </div>
+        </div>
+      </section>
+
+      <section className="pageSection">
+        <div className="sectionHeading reveal" id="our-products">
+          <p className="sectionHeading__eyebrow">Our products</p>
+          <h2 className="sectionHeading__title">
+            Productized AI systems built for real business workflows
+          </h2>
+          <p className="sectionHeading__body">
+            These are the product directions teams ask Criyx for most often,
+            from voice-led lead capture to content systems and WhatsApp-based
+            event follow-up.
+          </p>
+        </div>
+        <div className="detailGrid detailGrid--triple">
+          {productCatalog.map((product, index) => (
+            <article
+              className={`detailCard reveal reveal--delay-${(index % 3) + 1}`}
+              key={product.id}
+            >
+              <h3 className="detailCard__title">{product.title}</h3>
+              <p className="detailCard__body">{product.body}</p>
+              <p className="detailCard__meta">
+                <Link className="textLink" to={product.to}>
+                  View product details
+                </Link>
+              </p>
+            </article>
+          ))}
         </div>
       </section>
 

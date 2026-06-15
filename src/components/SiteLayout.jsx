@@ -29,7 +29,7 @@ export default function SiteLayout() {
   return (
     <main className="app">
       <TargetCursor
-        targetSelector=".brand, .siteNav__link, .button, .techCard, .statCard, .whyCard, .proofCard, .detailCard, .serviceCard, .capabilityCard, .visualSlide, .spotlightPanel, .processNode, .processStage, .faqItem__summary"
+        targetSelector=".brand, .sm-toggle, .sm-panel-item, .sm-secondary-link, .button, .techCard, .statCard, .whyCard, .proofCard, .detailCard, .serviceCard, .capabilityCard, .visualSlide, .spotlightPanel, .processNode, .processStage, .faqItem__summary"
         spinDuration={2.4}
         hideDefaultCursor={true}
         hoverDuration={0.18}

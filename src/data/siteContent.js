@@ -7,6 +7,735 @@ export const navItems = [
   { label: 'FAQ', to: '/faq' },
 ];
 
+export const productPages = [
+  {
+    slug: 'ai-voice-agent',
+    label: 'AI Voice Agent',
+    eyebrow: 'Our Products',
+    title:
+      'AI voice agents built for qualification, intake, support, and handoff without losing operational control.',
+    intro:
+      'This product is designed for teams that need voice-first interactions to feel immediate, structured, and useful. Criyx builds voice agents that can answer defined questions, capture lead or service context, route conversations correctly, and escalate to people whenever the workflow moves beyond what automation should handle alone.',
+    stats: [
+      {
+        value: '24/7',
+        label: 'Voice coverage for inbound qualification, service intake, or guided customer response.',
+      },
+      {
+        value: 'Real-time',
+        label: 'Context retrieval and workflow decisions while the conversation is still in progress.',
+      },
+      {
+        value: 'Human-safe',
+        label: 'Escalation paths for ambiguity, urgency, compliance-sensitive cases, or low-confidence moments.',
+      },
+    ],
+    pillars: [
+      {
+        title: 'Structured voice qualification',
+        body:
+          'The agent follows a clear conversational path so the business captures the details it actually needs, instead of producing long transcripts with no operational value.',
+      },
+      {
+        title: 'Routing and action orchestration',
+        body:
+          'Once the call intent is understood, the system can tag the interaction, trigger follow-up tasks, update records, and send the case to the right queue or team.',
+      },
+      {
+        title: 'Controlled escalation',
+        body:
+          'Not every call should stay automated. Criyx designs voice systems with transfer rules, fallback logic, and exception handling so the customer never gets trapped in a dead-end interaction.',
+      },
+    ],
+    journey: [
+      {
+        step: '01',
+        title: 'Capture intent and required fields',
+        body:
+          'The voice agent greets, frames the conversation, and collects the inputs the workflow needs, whether that means budget, location, service issue, appointment type, or product interest.',
+      },
+      {
+        step: '02',
+        title: 'Retrieve context and decide next action',
+        body:
+          'The system can check knowledge, compare rules, inspect the caller context, and determine whether it should answer, qualify further, create a task, or route to a person.',
+      },
+      {
+        step: '03',
+        title: 'Log outcomes and continue the workflow',
+        body:
+          'Every call should leave a usable record. Criyx connects the conversation outcome to CRM updates, ticketing actions, summaries, notifications, and follow-up sequences.',
+      },
+    ],
+    useCases: [
+      {
+        title: 'Inbound sales qualification',
+        body:
+          'Screen incoming leads, capture structured requirements, score urgency, and book or route the opportunity without making the sales team repeat basic intake work.',
+      },
+      {
+        title: 'Service intake and dispatch',
+        body:
+          'Collect issue details, identify severity, confirm location and contact data, then move the request into the right support or field operations flow.',
+      },
+      {
+        title: 'Guided information response',
+        body:
+          'Handle repetitive voice questions around availability, process steps, documentation, or next actions while keeping the answer grounded in approved business context.',
+      },
+    ],
+    modules: [
+      {
+        title: 'Conversation layer',
+        points: [
+          'Brand-appropriate greeting, tone, and response design.',
+          'Prompting built around structured questions instead of open-ended drift.',
+          'Low-latency voice turn handling for a more natural call experience.',
+        ],
+      },
+      {
+        title: 'Workflow layer',
+        points: [
+          'Routing rules for qualification, escalation, call outcomes, and follow-up actions.',
+          'CRM, calendar, support, or internal tool integration based on the use case.',
+          'Fallback handling when the conversation leaves the approved path.',
+        ],
+      },
+      {
+        title: 'Reporting layer',
+        points: [
+          'Call summaries that operators can use immediately.',
+          'Visibility into conversion, transfer, abandonment, and exception patterns.',
+          'Audit trails showing what the agent said, decided, and triggered.',
+        ],
+      },
+    ],
+    faqs: [
+      {
+        question: 'Where do AI voice agents usually fit best?',
+        answer:
+          'They fit best in workflows where the first part of the conversation is structured and repetitive, such as qualification, intake, appointment screening, or standard support triage. The more clearly the required fields and routing logic are defined, the stronger the result.',
+      },
+      {
+        question: 'Can the voice agent hand over to a human smoothly?',
+        answer:
+          'Yes. Criyx designs the handoff path as part of the system. That includes deciding when escalation should happen, what context should be passed to the human, and how the call outcome should be logged so the team does not lose continuity.',
+      },
+    ],
+    ctaTitle:
+      'If your team handles repetitive inbound calls, a voice agent should reduce workload and improve response quality at the same time.',
+    ctaBody:
+      'The right design depends on the workflow, the escalation conditions, and the systems that need to update after each interaction.',
+  },
+  {
+    slug: 'marketing-agent',
+    label: 'Marketing Agent',
+    eyebrow: 'Our Products',
+    title:
+      'Marketing agents that help plan, generate, route, and review campaign work as an actual operating system.',
+    intro:
+      'Criyx treats a marketing agent as more than a copy generator. It should help marketing teams move from briefs to assets, from assets to approvals, and from approvals to publishing without losing brand consistency or execution speed. The system is designed to support the workflow, not replace every marketer in it.',
+    stats: [
+      {
+        value: 'Multi-channel',
+        label: 'Built for content and workflow support across email, social, landing pages, outbound, and internal launch coordination.',
+      },
+      {
+        value: 'Approval-ready',
+        label: 'Drafts, variants, and recommended next steps presented in formats teams can review quickly.',
+      },
+      {
+        value: 'Ops-focused',
+        label: 'Useful for campaign management, coordination, distribution, and reporting, not only ideation.',
+      },
+    ],
+    pillars: [
+      {
+        title: 'Brief-to-output execution',
+        body:
+          'The agent translates campaign inputs into tasks, copy directions, asset needs, channel variants, and next actions so execution starts with more clarity.',
+      },
+      {
+        title: 'Brand and workflow consistency',
+        body:
+          'Outputs are grounded in approved messaging, offer positioning, and content rules so the system supports the brand instead of adding more cleanup work.',
+      },
+      {
+        title: 'Operational support for the team',
+        body:
+          'A good marketing agent helps with routing, summarizing, checklists, performance notes, and campaign follow-through, not just headline generation.',
+      },
+    ],
+    journey: [
+      {
+        step: '01',
+        title: 'Interpret the campaign brief',
+        body:
+          'The system captures objectives, audience, offer, timing, channel mix, and conversion goals so every next action is tied to a real campaign frame.',
+      },
+      {
+        step: '02',
+        title: 'Generate and organize deliverables',
+        body:
+          'The agent can produce draft copy, asset outlines, launch tasks, approval packets, and channel-specific variants in a review-friendly structure.',
+      },
+      {
+        step: '03',
+        title: 'Support launch and iteration',
+        body:
+          'After approval, the system can route tasks, summarize campaign status, surface missing assets, and prepare post-launch reporting notes for the team.',
+      },
+    ],
+    useCases: [
+      {
+        title: 'Campaign rollout support',
+        body:
+          'Move from brief to launch checklist faster by generating structured assets, workback plans, and channel-ready first drafts.',
+      },
+      {
+        title: 'Always-on content operations',
+        body:
+          'Keep recurring content programs moving with systems for ideation, draft creation, internal review, and publishing support.',
+      },
+      {
+        title: 'Sales and marketing alignment',
+        body:
+          'Produce messaging packs, outbound variations, enablement summaries, and launch notes that sales teams can actually use.',
+      },
+    ],
+    modules: [
+      {
+        title: 'Planning layer',
+        points: [
+          'Campaign brief intake with audience, goal, and channel structure.',
+          'Task sequencing for launches, approvals, dependencies, and review cycles.',
+          'Reusable templates for repeated campaign motions.',
+        ],
+      },
+      {
+        title: 'Generation layer',
+        points: [
+          'Copy generation for email, social, landing pages, and outbound support.',
+          'Variant creation for different channels, personas, or offers.',
+          'Structured output formats that reduce manual rework.',
+        ],
+      },
+      {
+        title: 'Reporting layer',
+        points: [
+          'Launch summaries, status updates, and handoff notes.',
+          'Performance review scaffolding for weekly or campaign-level reporting.',
+          'Visibility into bottlenecks, incomplete approvals, and missing assets.',
+        ],
+      },
+    ],
+    faqs: [
+      {
+        question: 'Does a marketing agent only generate copy?',
+        answer:
+          'No. Criyx treats it as a workflow product, not a writing toy. The stronger use case is helping the team move from brief to assets, approvals, launch readiness, and reporting support with less coordination overhead.',
+      },
+      {
+        question: 'How do you keep the outputs aligned with the brand?',
+        answer:
+          'The agent is grounded in approved messaging, offer context, audience framing, and content rules. Review steps still matter, but the system starts much closer to what the team actually wants to publish.',
+      },
+    ],
+    ctaTitle:
+      'Marketing teams usually do not need more raw ideas. They need a system that helps campaigns move cleanly from brief to launch.',
+    ctaBody:
+      'Criyx builds that system around the channels, reviewers, content standards, and approval steps your team already works with.',
+  },
+  {
+    slug: 'content-generator',
+    label: 'Content Generator',
+    eyebrow: 'Our Products',
+    title:
+      'Content generation systems that turn source material into usable, reviewable, brand-consistent outputs at scale.',
+    intro:
+      'This product is for teams that need content creation to be faster without making it chaotic. Criyx builds generation systems that pull from approved source material, apply structure to the output, and fit into an editorial or commercial workflow that still includes review, correction, and publishing control.',
+    stats: [
+      {
+        value: 'Long-form',
+        label: 'Supports blog posts, landing pages, product explainers, guides, and internal documentation.',
+      },
+      {
+        value: 'Variant-ready',
+        label: 'Creates multiple versions for channels, audiences, or formats from one content base.',
+      },
+      {
+        value: 'Review-safe',
+        label: 'Built for revision loops, approval checkpoints, and quality control before publishing.',
+      },
+    ],
+    pillars: [
+      {
+        title: 'Source-grounded generation',
+        body:
+          'The system should create from validated product context, briefs, offers, notes, or knowledge sources so the output is easier to trust and edit.',
+      },
+      {
+        title: 'Structured drafting',
+        body:
+          'Criyx designs generation flows that can produce outlines, first drafts, alternate versions, summaries, and formatted deliverables instead of unstructured text blocks.',
+      },
+      {
+        title: 'Editorial workflow support',
+        body:
+          'Good content systems respect owners, reviewers, publishing rules, and revision steps so the output fits the team process rather than disrupting it.',
+      },
+    ],
+    journey: [
+      {
+        step: '01',
+        title: 'Ingest the source material',
+        body:
+          'The system receives product notes, campaign context, interview points, offer details, or internal references that define what the content must actually say.',
+      },
+      {
+        step: '02',
+        title: 'Generate structured drafts and variants',
+        body:
+          'Criyx can produce outlines, body copy, social derivatives, sales collateral, or multiple angle variations based on the same source pack.',
+      },
+      {
+        step: '03',
+        title: 'Route the draft into review and publishing',
+        body:
+          'Content should move into editing, approval, CMS upload, or distribution workflows with version visibility and ownership built in.',
+      },
+    ],
+    useCases: [
+      {
+        title: 'Blog and SEO production',
+        body:
+          'Generate first drafts, summaries, meta ideas, and repurposed channel copy while keeping the article tied to the real source material.',
+      },
+      {
+        title: 'Product and sales collateral',
+        body:
+          'Create product pages, one-pagers, feature explainers, outbound snippets, and FAQ-style assets from a single approved knowledge base.',
+      },
+      {
+        title: 'Internal knowledge content',
+        body:
+          'Turn notes, decisions, and operational documentation into clean internal references that are easier for teams to read and reuse.',
+      },
+    ],
+    modules: [
+      {
+        title: 'Source layer',
+        points: [
+          'Knowledge inputs from briefs, notes, product docs, and approved reference material.',
+          'Context controls that keep generation closer to the intended message.',
+          'Formatting rules for content type, length, and audience expectations.',
+        ],
+      },
+      {
+        title: 'Generation layer',
+        points: [
+          'Outline, draft, summarize, rewrite, and repurpose flows.',
+          'Support for multiple content formats from a single source pack.',
+          'Variant generation that remains consistent with the core message.',
+        ],
+      },
+      {
+        title: 'Governance layer',
+        points: [
+          'Review and approval steps before publishing or sending.',
+          'Version visibility so teams can compare outputs and revisions.',
+          'Quality gates for tone, structure, and unacceptable claim patterns.',
+        ],
+      },
+    ],
+    faqs: [
+      {
+        question: 'What makes this different from a basic AI writing tool?',
+        answer:
+          'A basic tool generates text. This product is designed as a content system. It starts from approved source material, produces structured deliverables, and fits into a real review and publishing workflow so the output is easier to trust.',
+      },
+      {
+        question: 'Can it create multiple formats from the same source?',
+        answer:
+          'Yes. One of the main advantages is turning a single source pack into long-form content, short-form derivatives, internal summaries, outbound snippets, or channel variants without rebuilding the context from scratch each time.',
+      },
+    ],
+    ctaTitle:
+      'A content generator becomes valuable when it saves time without creating new review chaos.',
+    ctaBody:
+      'Criyx builds content systems around your actual source material, publishing flow, and quality standard so the outputs are useful from day one.',
+  },
+  {
+    slug: 'exhibition-whatsapp',
+    label: 'Exhibition WhatsApp',
+    eyebrow: 'Our Products',
+    title:
+      'WhatsApp systems for exhibitions, trade shows, and booth follow-up so every conversation becomes a trackable next step.',
+    intro:
+      'Teams often lose value after events because lead details are incomplete, follow-up is slow, and the context of the conversation disappears. Criyx designs WhatsApp-based exhibition workflows that capture interest at the booth, qualify the lead, send the right information, and route the contact into the correct follow-up process immediately.',
+    stats: [
+      {
+        value: 'Instant',
+        label: 'Lead capture and follow-up starts while the event conversation is still fresh.',
+      },
+      {
+        value: 'Tagged',
+        label: 'Contacts are grouped by product interest, urgency, segment, or event-specific qualifiers.',
+      },
+      {
+        value: 'Tracked',
+        label: 'The sales team can see what was captured, what was sent, and which leads still need action.',
+      },
+    ],
+    pillars: [
+      {
+        title: 'Fast event lead capture',
+        body:
+          'The workflow makes it easy for booth visitors to enter the system without long forms, manual typing, or post-event cleanup headaches.',
+      },
+      {
+        title: 'Useful qualification and follow-up',
+        body:
+          'Criyx adds logic for product interest, timeline, buyer intent, geography, and next-step routing so the WhatsApp interaction is commercially meaningful.',
+      },
+      {
+        title: 'Sales-ready visibility',
+        body:
+          'Every event lead should end up with context, tags, and the right owner. That is how event traffic becomes pipeline instead of a spreadsheet backlog.',
+      },
+    ],
+    journey: [
+      {
+        step: '01',
+        title: 'Capture and confirm the contact',
+        body:
+          'The visitor enters through a QR, prompt, short link, or staff-assisted flow and receives an immediate WhatsApp interaction that confirms the connection.',
+      },
+      {
+        step: '02',
+        title: 'Qualify and segment the lead',
+        body:
+          'The system asks the small number of questions needed to tag the lead correctly and determine which product, team, or sequence should follow.',
+      },
+      {
+        step: '03',
+        title: 'Send content and assign ownership',
+        body:
+          'Relevant material can be sent instantly while the lead record is updated, the right sales owner is alerted, and follow-up tasks are created.',
+      },
+    ],
+    useCases: [
+      {
+        title: 'Trade show booth capture',
+        body:
+          'Convert walk-up traffic into a tagged and trackable lead flow without depending on paper cards or manual CRM entry after the event.',
+      },
+      {
+        title: 'Product-specific event routing',
+        body:
+          'Direct visitors toward the relevant offer, team, or product line based on what they actually asked about at the booth.',
+      },
+      {
+        title: 'Post-event nurture and follow-up',
+        body:
+          'Continue the conversation with the right documents, reminders, next steps, and internal owner visibility so the lead does not go cold.',
+      },
+    ],
+    modules: [
+      {
+        title: 'Entry layer',
+        points: [
+          'QR, short link, or assisted booth capture flows.',
+          'Opt-in confirmation and contact validation.',
+          'Event-specific entry logic for region, booth, or product line.',
+        ],
+      },
+      {
+        title: 'Automation layer',
+        points: [
+          'Segmentation and tagging based on structured questions.',
+          'Instant send-outs for brochures, offers, demo links, or scheduling options.',
+          'Routing logic for owner assignment and follow-up sequence selection.',
+        ],
+      },
+      {
+        title: 'Sales coordination layer',
+        points: [
+          'CRM updates and task creation after each completed interaction.',
+          'Visibility into unanswered leads and pending callbacks.',
+          'Event-level reporting on interest patterns and follow-up progress.',
+        ],
+      },
+    ],
+    faqs: [
+      {
+        question: 'Why use WhatsApp for exhibition follow-up?',
+        answer:
+          'Because it reduces the gap between the live event conversation and the first next step. Visitors respond faster, teams capture more context while it is still fresh, and sales gets a more usable handoff than a post-event spreadsheet cleanup.',
+      },
+      {
+        question: 'Can the system route leads to different teams or products?',
+        answer:
+          'Yes. That is one of the main reasons to build it properly. The workflow can tag by interest, urgency, geography, or segment and then send the lead into the right owner queue, content path, or follow-up sequence.',
+      },
+    ],
+    ctaTitle:
+      'Event traffic only matters if the follow-up system is fast, organized, and visible to sales.',
+    ctaBody:
+      'Criyx can turn WhatsApp into that system so leads move from booth interaction to trackable pipeline with much less manual cleanup.',
+  },
+  {
+    slug: 'workflow-automation',
+    label: 'Workflow Automation',
+    eyebrow: 'Our Products',
+    title:
+      'Workflow automation systems that connect triggers, context, approvals, AI steps, and reporting into one operating flow.',
+    intro:
+      'This product is for businesses that want to reduce manual coordination across recurring work. Criyx builds workflow automations that do more than pass data from one tool to another. They route decisions, check conditions, summarize context, trigger follow-up actions, and preserve visibility so the process still feels governable after launch.',
+    stats: [
+      {
+        value: 'Cross-system',
+        label: 'Designed to work across CRMs, support tools, forms, messaging layers, docs, and internal operating software.',
+      },
+      {
+        value: 'Approval-led',
+        label: 'Sensitive steps can stay behind human checkpoints while low-risk tasks continue automatically.',
+      },
+      {
+        value: 'Audit-ready',
+        label: 'Outcomes, exceptions, and triggered actions remain visible for teams that need trust and accountability.',
+      },
+    ],
+    pillars: [
+      {
+        title: 'Business-rule orchestration',
+        body:
+          'Criyx maps the actual decision rules inside the workflow so the automation behaves like an operating process, not a brittle chain of tool actions.',
+      },
+      {
+        title: 'AI where it adds leverage',
+        body:
+          'Automation can include summarization, routing support, content generation, or recommendation logic, but only where that improves the workflow.',
+      },
+      {
+        title: 'Exception and fallback handling',
+        body:
+          'Strong automation systems are clear about where they stop, when they escalate, and how they behave when the input does not fit the expected pattern.',
+      },
+    ],
+    journey: [
+      {
+        step: '01',
+        title: 'Trigger and gather context',
+        body:
+          'The workflow begins with a form, message, ticket, lead, update, or business event and gathers the data needed to decide what should happen next.',
+      },
+      {
+        step: '02',
+        title: 'Route, enrich, and decide',
+        body:
+          'The system can apply business rules, request AI help where appropriate, retrieve reference context, and determine the correct action path.',
+      },
+      {
+        step: '03',
+        title: 'Approve, execute, and record',
+        body:
+          'Tasks are completed, stakeholders are notified, systems are updated, and the final outcome is logged in a way the team can inspect later.',
+      },
+    ],
+    useCases: [
+      {
+        title: 'Lead and revenue operations',
+        body:
+          'Clean, enrich, score, route, and follow up on inbound opportunities without losing ownership or response quality.',
+      },
+      {
+        title: 'Support and escalation flows',
+        body:
+          'Summarize requests, tag priority, send the case to the correct queue, and keep internal visibility on pending action.',
+      },
+      {
+        title: 'Internal reporting and coordination',
+        body:
+          'Turn repeated manual updates, summaries, reminders, and cross-team notifications into a connected operating system.',
+      },
+    ],
+    modules: [
+      {
+        title: 'Integration layer',
+        points: [
+          'Triggers from the systems your team already uses.',
+          'Data movement between CRM, support, docs, messaging, and internal tools.',
+          'Field mapping and context preservation across steps.',
+        ],
+      },
+      {
+        title: 'Decision layer',
+        points: [
+          'Rule-based branching and approval checkpoints.',
+          'Optional AI steps for summarization, categorization, or guided recommendations.',
+          'Fallback handling for incomplete or ambiguous cases.',
+        ],
+      },
+      {
+        title: 'Observability layer',
+        points: [
+          'Status visibility for operators and managers.',
+          'Exception tracking and retry awareness.',
+          'Outcome logs that make the workflow easier to trust and tune.',
+        ],
+      },
+    ],
+    faqs: [
+      {
+        question: 'Do workflow automations always need AI inside them?',
+        answer:
+          'No. Criyx uses AI only where it adds leverage. Some steps should stay deterministic and rule-based. Others benefit from summarization, classification, or context synthesis. The system should reflect the real needs of the workflow, not force AI everywhere.',
+      },
+      {
+        question: 'How do you keep automations from becoming black boxes?',
+        answer:
+          'By designing for visibility from the start. That means clear triggers, readable logic, approval points where needed, outcome logs, and exception handling that operators can actually inspect instead of guess about later.',
+      },
+    ],
+    ctaTitle:
+      'The value of workflow automation comes from reducing friction without hiding how the business process works.',
+    ctaBody:
+      'Criyx builds automation systems that move faster while still leaving the team with visibility, control, and clear exception handling.',
+  },
+  {
+    slug: 'custom-apps',
+    label: 'Custom Apps',
+    eyebrow: 'Our Products',
+    title:
+      'Custom apps and operator-facing software built around the workflow that the AI system is supposed to improve.',
+    intro:
+      'Some workflows do not just need automation behind the scenes. They need a surface people can use every day. Criyx builds internal tools, control panels, dashboards, and lightweight web apps that sit on top of AI-driven workflows so teams can review outputs, approve actions, monitor status, and keep control of the process.',
+    stats: [
+      {
+        value: 'Operator-first',
+        label: 'Designed around the people who need to review, approve, correct, and act on the system every day.',
+      },
+      {
+        value: 'Workflow-fit',
+        label: 'Interfaces are shaped by the real process, not by generic SaaS templates.',
+      },
+      {
+        value: 'Deployment-ready',
+        label: 'Connected to the automation, reporting, and business tools that need to participate in the workflow.',
+      },
+    ],
+    pillars: [
+      {
+        title: 'Practical control surfaces',
+        body:
+          'The app should give the team the smallest useful interface for reviewing work, acting on exceptions, and monitoring the system without extra complexity.',
+      },
+      {
+        title: 'Embedded workflow intelligence',
+        body:
+          'AI features become more useful when they live inside the place where people already make decisions, approve actions, and inspect context.',
+      },
+      {
+        title: 'Business-specific usability',
+        body:
+          'Criyx designs around your process, vocabulary, handoffs, and reporting needs so the software feels tied to the operation instead of to a generic template.',
+      },
+    ],
+    journey: [
+      {
+        step: '01',
+        title: 'Map the operator journey',
+        body:
+          'We identify who needs to use the app, what decisions they make, which records they inspect, and what actions should be available from the interface.',
+      },
+      {
+        step: '02',
+        title: 'Design the workflow surface',
+        body:
+          'The app is structured around queues, approvals, summaries, dashboards, forms, or actions that reflect the real operating motion of the team.',
+      },
+      {
+        step: '03',
+        title: 'Connect the app to the automation layer',
+        body:
+          'The interface then connects to the workflows, records, and reporting signals that keep the system useful after launch.',
+      },
+    ],
+    useCases: [
+      {
+        title: 'Approval and exception centers',
+        body:
+          'Give managers or operators one place to review AI outputs, approve sensitive actions, correct edge cases, and keep the workflow moving.',
+      },
+      {
+        title: 'Internal operations portals',
+        body:
+          'Create lightweight tools for support, sales ops, delivery, or internal reporting teams that need structured workflow visibility.',
+      },
+      {
+        title: 'Customer-facing workflow surfaces',
+        body:
+          'Build simple web experiences that expose the right AI-assisted flow to users without revealing the complexity behind the scenes.',
+      },
+    ],
+    modules: [
+      {
+        title: 'Interface layer',
+        points: [
+          'Dashboards, queues, records, and action panels aligned to the workflow.',
+          'Views tailored to roles such as operators, managers, or reviewers.',
+          'Useful information hierarchy instead of generic admin clutter.',
+        ],
+      },
+      {
+        title: 'Action layer',
+        points: [
+          'Approve, reject, edit, reroute, trigger, or escalate actions from the interface.',
+          'Embedded summaries, AI assistance, and workflow context where decisions happen.',
+          'Connected state changes that update the wider system immediately.',
+        ],
+      },
+      {
+        title: 'Governance layer',
+        points: [
+          'Permission-aware access and role-sensitive actions.',
+          'Activity logs showing who changed what and when.',
+          'Reporting hooks for throughput, exception rates, and team usage.',
+        ],
+      },
+    ],
+    faqs: [
+      {
+        question: 'When does a workflow need a custom app instead of just automation?',
+        answer:
+          'It needs a custom app when people still have to review, approve, correct, compare, or act on the workflow regularly. If the team needs a daily operating surface, pure background automation is usually not enough.',
+      },
+      {
+        question: 'Are these apps only for internal teams?',
+        answer:
+          'Not necessarily. Many are internal tools, but the same model can support customer-facing workflow surfaces when a business wants users to interact with an AI-assisted process through a controlled interface.',
+      },
+    ],
+    ctaTitle:
+      'When the workflow needs a real operating surface, automation alone is not enough.',
+    ctaBody:
+      'Criyx can build the software layer that makes the AI system understandable, actionable, and maintainable for the people who use it.',
+  },
+];
+
+export const productNavItems = productPages.map((product) => ({
+  label: product.label,
+  to: `/products/${product.slug}`,
+}));
+
+export const productCatalog = productPages.map((product) => ({
+  id: product.slug,
+  title: product.label,
+  body: product.intro,
+  to: `/products/${product.slug}`,
+}));
+
 export const technologies = [
   { label: 'n8n', mark: 'n' },
   { label: 'Claude', mark: 'C' },
