@@ -2,16 +2,39 @@ import { Link } from 'react-router-dom';
 import LogoLoop from '../components/LogoLoop';
 import { technologies } from '../data/siteContent';
 
+const heroTitleLines = [
+  { className: 'hero__titleBrand', delayClass: 'homeIntroReveal--delay-2', text: 'Criyx' },
+  {
+    className: 'hero__titleLine',
+    delayClass: 'homeIntroReveal--delay-3',
+    text: 'AI-Driven Solutions',
+  },
+  {
+    className: 'hero__titleLine',
+    delayClass: 'homeIntroReveal--delay-4',
+    text: 'for Modern',
+  },
+  {
+    className: 'hero__titleLine',
+    delayClass: 'homeIntroReveal--delay-5',
+    text: 'Businesses',
+  },
+];
+
 export default function HomePage() {
   return (
     <section className="hero" aria-labelledby="hero-title" id="hero">
       <div className="hero__content">
         <p className="hero__badge">Trusted by +21 companies like yours</p>
         <h1 className="hero__title" id="hero-title">
-          <span className="hero__titleBrand">Criyx</span>
-          <span className="hero__titleLine">AI-Driven Solutions</span>
-          <span className="hero__titleLine">for Modern</span>
-          <span className="hero__titleLine">Businesses</span>
+          {heroTitleLines.map((line) => (
+            <span
+              className={`${line.className} homeIntroReveal homeIntroReveal--visible ${line.delayClass}`}
+              key={line.text}
+            >
+              {line.text}
+            </span>
+          ))}
         </h1>
         <div className="hero__actions">
           <Link className="button button--secondary" to="/services">
