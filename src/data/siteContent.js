@@ -737,14 +737,14 @@ export const productCatalog = productPages.map((product) => ({
 }));
 
 export const technologies = [
-  { label: 'n8n', mark: 'n' },
-  { label: 'Claude', mark: 'C' },
-  { label: 'OpenAI', mark: 'O' },
-  { label: 'Make', mark: 'M' },
-  { label: 'LangChain', mark: 'L' },
-  { label: 'Flutter', mark: 'F' },
-  { label: 'Twilio', mark: 'T' },
-  { label: 'React', mark: 'R' },
+  { label: 'n8n', iconKey: 'n8n', mark: 'n' },
+  { label: 'Claude', iconKey: 'claude', mark: 'C' },
+  { label: 'OpenAI', iconKey: 'openai', mark: 'O' },
+  { label: 'Make', iconKey: 'make', mark: 'M' },
+  { label: 'LangChain', iconKey: 'langchain', mark: 'L' },
+  { label: 'Flutter', iconKey: 'flutter', mark: 'F' },
+  { label: 'Twilio', iconKey: 'twilio', mark: 'T' },
+  { label: 'React', iconKey: 'react', mark: 'R' },
 ];
 
 export const whyUsStats = [

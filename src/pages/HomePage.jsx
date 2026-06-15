@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import LogoLoop from '../components/LogoLoop';
+import TechnologyIcon from '../components/TechnologyIcon';
 import { technologies } from '../data/siteContent';
 
 const heroTitleLines = [
@@ -74,7 +75,11 @@ export default function HomePage() {
               renderItem={(technology) => (
                 <div className="heroLogoChip" title={technology.label}>
                   <span className="heroLogoChip__mark" aria-hidden="true">
-                    {technology.mark}
+                    <TechnologyIcon
+                      iconKey={technology.iconKey}
+                      label={technology.label}
+                      mark={technology.mark}
+                    />
                   </span>
                   <span className="heroLogoChip__label">{technology.label}</span>
                 </div>

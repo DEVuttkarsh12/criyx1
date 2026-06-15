@@ -510,6 +510,18 @@ a {
   text-transform: uppercase;
 }
 
+.heroLogoChip__icon {
+  display: block;
+  width: 18px;
+  height: 18px;
+  fill: currentColor;
+}
+
+.heroLogoChip__fallback {
+  display: block;
+  line-height: 1;
+}
+
 .heroLogoChip__label {
   color: var(--color-text-primary);
   font-size: clamp(18px, 1.8vw, 22px);
