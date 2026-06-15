@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useOutletContext } from 'react-router-dom';
+import LogoLoop from '../components/LogoLoop';
 import { technologies } from '../data/siteContent';
 
 const heroTitleParts = [
@@ -127,16 +128,29 @@ export default function HomePage() {
           <h2 className="hero__technologiesTitle" id="technologies-title">
             Our Core Technologies
           </h2>
-          <ul className="techGrid">
-            {technologies.map((technology) => (
-              <li className="techCard" key={technology.label}>
-                <span className="techCard__mark" aria-hidden="true">
-                  {technology.mark}
-                </span>
-                <span className="techCard__label">{technology.label}</span>
-              </li>
-            ))}
-          </ul>
+          <div className="hero__logoLoopWrap">
+            <LogoLoop
+              logos={technologies}
+              speed={72}
+              direction="left"
+              logoHeight={52}
+              gap={18}
+              hoverSpeed={16}
+              fadeOut
+              fadeOutColor="#0f0f0f"
+              scaleOnHover
+              ariaLabel="Core technologies used by Criyx"
+              className="hero__logoLoop"
+              renderItem={(technology) => (
+                <div className="heroLogoChip" title={technology.label}>
+                  <span className="heroLogoChip__mark" aria-hidden="true">
+                    {technology.mark}
+                  </span>
+                  <span className="heroLogoChip__label">{technology.label}</span>
+                </div>
+              )}
+            />
+          </div>
         </section>
       </div>
     </section>

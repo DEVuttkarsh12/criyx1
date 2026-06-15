@@ -648,6 +648,59 @@ a {
   line-height: 1.2;
 }
 
+.hero__logoLoopWrap {
+  position: relative;
+  width: 100%;
+  padding: 10px 0;
+}
+
+.hero__logoLoop {
+  width: 100%;
+}
+
+.hero__logoLoop .logoloop__track {
+  align-items: center;
+}
+
+.heroLogoChip {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  min-height: 58px;
+  padding: 0 20px;
+  border: 1px solid var(--color-border-subtle);
+  border-radius: 999px;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.04) 0%, rgba(21, 21, 21, 0.88) 100%),
+    var(--color-surface-card);
+  box-shadow: var(--shadow-1);
+  backdrop-filter: blur(14px);
+  white-space: nowrap;
+}
+
+.heroLogoChip__mark {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  background: rgba(255, 255, 255, 0.03);
+  color: var(--color-text-primary);
+  font-size: var(--font-size-md);
+  font-weight: var(--font-weight-bold);
+  text-transform: uppercase;
+}
+
+.heroLogoChip__label {
+  color: var(--color-text-primary);
+  font-size: clamp(18px, 1.8vw, 22px);
+  font-weight: var(--font-weight-medium);
+  letter-spacing: -0.03em;
+  line-height: 1;
+}
+
 .page {
   width: min(100%, var(--container-max));
   margin: 0 auto;
@@ -1742,6 +1795,15 @@ a {
     font-size: var(--font-size-lg);
   }
 
+  .heroLogoChip {
+    min-height: 52px;
+    padding: 0 18px;
+  }
+
+  .heroLogoChip__label {
+    font-size: 18px;
+  }
+
   .pageIntro {
     gap: var(--space-3);
   }
@@ -1829,6 +1891,21 @@ a {
 
   .loaderOverlay__content {
     width: min(100%, 360px);
+  }
+
+  .heroLogoChip {
+    min-height: 48px;
+    padding: 0 16px;
+    gap: 10px;
+  }
+
+  .heroLogoChip__mark {
+    width: 30px;
+    height: 30px;
+  }
+
+  .heroLogoChip__label {
+    font-size: 16px;
   }
 
   .loaderOverlay__ashParticle:nth-child(1) { --ash-x: -24px; --ash-y: -64px; }
