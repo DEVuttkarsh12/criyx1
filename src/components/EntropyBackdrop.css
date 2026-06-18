@@ -1,0 +1,46 @@
+.entropyBackdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at 50% 18%, rgba(255, 255, 255, 0.06) 0%, rgba(255, 255, 255, 0) 28%),
+    linear-gradient(180deg, #020202 0%, #050505 48%, #000000 100%);
+}
+
+.entropyBackdrop__stage,
+.entropyBackdrop__glow,
+.entropyBackdrop__vignette {
+  position: absolute;
+  inset: 0;
+}
+
+.entropyBackdrop__stage {
+  display: grid;
+  place-items: center;
+  opacity: 0.88;
+}
+
+.entropyBackdrop__entropy {
+  background: transparent;
+  filter: contrast(1.08) brightness(0.92);
+}
+
+.entropyBackdrop__glow {
+  background:
+    radial-gradient(circle at 25% 50%, rgba(255, 255, 255, 0.04) 0%, rgba(255, 255, 255, 0) 26%),
+    radial-gradient(circle at 75% 50%, rgba(255, 255, 255, 0.03) 0%, rgba(255, 255, 255, 0) 26%);
+}
+
+.entropyBackdrop__vignette {
+  background:
+    radial-gradient(circle at 50% 44%, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.18) 54%, rgba(0, 0, 0, 0.74) 100%),
+    linear-gradient(90deg, rgba(0, 0, 0, 0.56) 0%, rgba(0, 0, 0, 0.06) 18%, rgba(0, 0, 0, 0.06) 82%, rgba(0, 0, 0, 0.58) 100%);
+}
+
+@media (max-width: 960px) {
+  .entropyBackdrop__stage {
+    opacity: 0.72;
+  }
+}

@@ -1,13 +1,12 @@
-import { useEffect, useState } from 'react';
-import { Outlet, useLocation } from 'react-router-dom';
-import backgroundVideo from '../../asset/untitled_project_remix_scene.mp4';
+import { lazy, Suspense, useEffect, useState } from 'react';
+import { Outlet } from 'react-router-dom';
 import SiteHeader from './SiteHeader';
-import TargetCursor from './TargetCursor';
+
+const DepthGlobeBackdrop = lazy(() => import('./DepthGlobeBackdrop'));
+const TargetCursor = lazy(() => import('./TargetCursor'));
 
 export default function SiteLayout() {
-  const location = useLocation();
   const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
-  const [hasCompletedHomeIntro, setHasCompletedHomeIntro] = useState(false);
 
   useEffect(() => {
     const mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
@@ -23,38 +22,23 @@ export default function SiteLayout() {
     };
   }, []);
 
-  const shouldAnimateHomeIntro =
-    location.pathname === '/' && !hasCompletedHomeIntro;
-
   return (
     <main className="app">
-      <TargetCursor
-        targetSelector=".brand, .sm-toggle, .sm-panel-item, .sm-secondary-link, .button, .techCard, .statCard, .whyCard, .proofCard, .detailCard, .serviceCard, .capabilityCard, .visualSlide, .spotlightPanel, .processNode, .processStage, .faqItem__summary"
-        spinDuration={2.4}
-        hideDefaultCursor={true}
-        hoverDuration={0.18}
-        parallaxOn={true}
-      />
-      <video
-        className="app__video"
-        autoPlay
-        loop
-        muted
-        playsInline
-        aria-hidden="true"
-      >
-        <source src={backgroundVideo} type="video/mp4" />
-      </video>
+      <Suspense fallback={null}>
+        <DepthGlobeBackdrop prefersReducedMotion={prefersReducedMotion} />
+      </Suspense>
+      <Suspense fallback={null}>
+        <TargetCursor
+          targetSelector=".brand, .siteNav__link, .siteDropdown__link, .siteHeader__mobileToggle, .siteMobileDropdown__summary, .siteMobileNav__link, .button, .techCard, .statCard, .whyCard, .proofCard, .detailCard, .serviceCard, .capabilityCard, .visualSlide, .spotlightPanel, .processNode, .processStage, .faqItem__summary"
+          spinDuration={2.4}
+          hideDefaultCursor={true}
+          hoverDuration={0.18}
+          parallaxOn={true}
+        />
+      </Suspense>
       <div className="app__canvas">
         <SiteHeader />
-        <Outlet
-          context={{
-            isExperienceReady: true,
-            prefersReducedMotion,
-            shouldAnimateHomeIntro,
-            completeHomeIntro: setHasCompletedHomeIntro,
-          }}
-        />
+        <Outlet />
       </div>
     </main>
   );

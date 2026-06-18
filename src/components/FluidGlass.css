@@ -1,0 +1,16 @@
+.fluidGlass {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at top left, rgba(198, 92, 55, 0.14), transparent 34%),
+    radial-gradient(circle at bottom right, rgba(242, 191, 66, 0.08), transparent 28%),
+    #100e11;
+}
+
+.fluidGlass__canvas {
+  width: 100% !important;
+  height: 100% !important;
+  touch-action: pan-y;
+}

@@ -1,0 +1,42 @@
+.laserFlowBackdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at 50% 18%, rgba(214, 113, 56, 0.14) 0%, rgba(214, 113, 56, 0) 32%),
+    linear-gradient(180deg, #020202 0%, #050202 48%, #000000 100%);
+}
+
+.laserFlowBackdrop__layer,
+.laserFlowBackdrop__glow,
+.laserFlowBackdrop__vignette {
+  position: absolute;
+  inset: 0;
+}
+
+.laserFlowBackdrop__layer {
+  opacity: 0.84;
+  transform: scale(1.05);
+}
+
+.laserFlowBackdrop__glow {
+  background:
+    radial-gradient(circle at 50% 5%, rgba(212, 109, 56, 0.24) 0%, rgba(212, 109, 56, 0.1) 12%, rgba(212, 109, 56, 0) 34%),
+    linear-gradient(180deg, rgba(212, 109, 56, 0.06) 0%, rgba(0, 0, 0, 0) 28%);
+  mix-blend-mode: screen;
+}
+
+.laserFlowBackdrop__vignette {
+  background:
+    radial-gradient(circle at 50% 42%, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.18) 52%, rgba(0, 0, 0, 0.68) 100%),
+    linear-gradient(90deg, rgba(0, 0, 0, 0.62) 0%, rgba(0, 0, 0, 0.08) 18%, rgba(0, 0, 0, 0.08) 82%, rgba(0, 0, 0, 0.62) 100%);
+}
+
+@media (max-width: 960px) {
+  .laserFlowBackdrop__layer {
+    opacity: 0.72;
+    transform: scale(1.08);
+  }
+}

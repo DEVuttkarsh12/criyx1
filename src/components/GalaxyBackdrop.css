@@ -1,0 +1,56 @@
+.galaxyBackdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at 52% 14%, rgba(214, 113, 56, 0.16) 0%, rgba(214, 113, 56, 0) 28%),
+    radial-gradient(circle at 74% 26%, rgba(244, 208, 157, 0.08) 0%, rgba(244, 208, 157, 0) 24%),
+    linear-gradient(180deg, #020202 0%, #040303 44%, #000000 100%);
+}
+
+.galaxyBackdrop__layer,
+.galaxyBackdrop__bloom,
+.galaxyBackdrop__grain,
+.galaxyBackdrop__vignette {
+  position: absolute;
+  inset: 0;
+}
+
+.galaxyBackdrop__layer {
+  opacity: 0.94;
+}
+
+.galaxyBackdrop__bloom {
+  background:
+    radial-gradient(circle at 78% 18%, rgba(242, 198, 126, 0.14) 0%, rgba(242, 198, 126, 0.06) 12%, rgba(242, 198, 126, 0) 34%),
+    radial-gradient(circle at 22% 72%, rgba(112, 57, 24, 0.1) 0%, rgba(112, 57, 24, 0) 32%);
+  mix-blend-mode: screen;
+}
+
+.galaxyBackdrop__grain {
+  opacity: 0.03;
+  mix-blend-mode: soft-light;
+  background-image:
+    radial-gradient(rgba(255, 255, 255, 0.7) 0.5px, transparent 0.5px),
+    radial-gradient(rgba(255, 255, 255, 0.18) 0.5px, transparent 0.5px);
+  background-size: 18px 18px, 28px 28px;
+  background-position: 0 0, 11px 9px;
+}
+
+.galaxyBackdrop__vignette {
+  background:
+    radial-gradient(circle at 50% 44%, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.16) 54%, rgba(0, 0, 0, 0.72) 100%),
+    linear-gradient(90deg, rgba(0, 0, 0, 0.54) 0%, rgba(0, 0, 0, 0.05) 18%, rgba(0, 0, 0, 0.05) 82%, rgba(0, 0, 0, 0.56) 100%);
+}
+
+@media (max-width: 960px) {
+  .galaxyBackdrop__layer {
+    opacity: 0.8;
+  }
+
+  .galaxyBackdrop__grain {
+    opacity: 0.02;
+  }
+}

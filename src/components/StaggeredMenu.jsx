@@ -6,6 +6,18 @@ import './StaggeredMenu.css';
 const isExternalLink = (link) =>
   /^(https?:\/\/|mailto:|tel:)/i.test(link ?? '');
 
+const getPanelAxis = (position) => {
+  if (position === 'left') {
+    return { property: 'xPercent', offscreen: -100 };
+  }
+
+  if (position === 'right') {
+    return { property: 'xPercent', offscreen: 100 };
+  }
+
+  return { property: 'yPercent', offscreen: 100 };
+};
+
 export default function StaggeredMenu({
   position = 'right',
   colors = ['#4a2215', '#151515'],
@@ -57,12 +69,19 @@ export default function StaggeredMenu({
       const preLayers = preContainer
         ? Array.from(preContainer.querySelectorAll('.sm-prelayer'))
         : [];
+      const axis = getPanelAxis(position);
 
       preLayerElsRef.current = preLayers;
 
-      const offscreen = position === 'left' ? -100 : 100;
-
-      gsap.set([panel, ...preLayers], { xPercent: offscreen, opacity: 1 });
+      gsap.set([panel, ...preLayers], {
+        xPercent: 0,
+        yPercent: 0,
+        opacity: 1,
+      });
+      gsap.set([panel, ...preLayers], {
+        [axis.property]: axis.offscreen,
+        opacity: 1,
+      });
       gsap.set(plusH, { transformOrigin: '50% 50%', rotate: 0 });
       gsap.set(plusV, { transformOrigin: '50% 50%', rotate: 90 });
       gsap.set(icon, { rotate: 0, transformOrigin: '50% 50%' });
@@ -92,7 +111,7 @@ export default function StaggeredMenu({
     );
     const secondaryTitleEl = panel.querySelector('.sm-secondary-title');
     const secondaryLinks = Array.from(panel.querySelectorAll('.sm-secondary-link'));
-    const offscreen = position === 'left' ? -100 : 100;
+    const axis = getPanelAxis(position);
 
     if (itemEls.length) {
       gsap.set(itemEls, { yPercent: 140, rotate: 10 });
@@ -112,8 +131,8 @@ export default function StaggeredMenu({
     layers.forEach((layer, index) => {
       tl.fromTo(
         layer,
-        { xPercent: offscreen },
-        { xPercent: 0, duration: 0.46, ease: 'power4.out' },
+        { [axis.property]: axis.offscreen },
+        { [axis.property]: 0, duration: 0.46, ease: 'power4.out' },
         index * 0.07,
       );
     });
@@ -122,8 +141,8 @@ export default function StaggeredMenu({
 
     tl.fromTo(
       panel,
-      { xPercent: offscreen },
-      { xPercent: 0, duration: 0.62, ease: 'power4.out' },
+      { [axis.property]: axis.offscreen },
+      { [axis.property]: 0, duration: 0.62, ease: 'power4.out' },
       layerDelay,
     );
 
@@ -213,10 +232,10 @@ export default function StaggeredMenu({
       return;
     }
 
-    const offscreen = position === 'left' ? -100 : 100;
+    const axis = getPanelAxis(position);
     closeTweenRef.current?.kill();
     closeTweenRef.current = gsap.to([...layers, panel], {
-      xPercent: offscreen,
+      [axis.property]: axis.offscreen,
       duration: 0.32,
       ease: 'power3.in',
       overwrite: 'auto',

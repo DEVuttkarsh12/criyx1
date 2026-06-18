@@ -13,12 +13,7 @@ const heroTitleLines = [
   {
     className: 'hero__titleLine',
     delayClass: 'homeIntroReveal--delay-4',
-    text: 'for Modern',
-  },
-  {
-    className: 'hero__titleLine',
-    delayClass: 'homeIntroReveal--delay-5',
-    text: 'Businesses',
+    text: 'for Business Operations',
   },
 ];
 
@@ -48,8 +43,8 @@ export default function HomePage() {
           </Link>
         </div>
         <p className="hero__description">
-          Our platform simplifies data, uncovers trends, and helps you make
-          faster, informed decisions tailored for growth-focused teams.
+          AI automation, custom software, and workflow systems designed to
+          solve operational bottlenecks and remove repetitive work at scale.
         </p>
         <section
           className="hero__technologies"
@@ -67,8 +62,6 @@ export default function HomePage() {
               logoHeight={52}
               gap={18}
               hoverSpeed={16}
-              fadeOut
-              fadeOutColor="#0f0f0f"
               scaleOnHover
               ariaLabel="Core technologies used by Criyx"
               className="hero__logoLoop"

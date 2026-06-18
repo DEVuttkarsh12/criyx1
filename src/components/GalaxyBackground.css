@@ -1,0 +1,49 @@
+.galaxyBackground {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+  background: #000;
+}
+
+.galaxyBackground__mount,
+.galaxyBackground__fallback,
+.galaxyBackground__vignette,
+.galaxyBackground__grain {
+  position: absolute;
+  inset: 0;
+}
+
+.galaxyBackground__mount {
+  opacity: 0.96;
+}
+
+.galaxyBackground__canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.galaxyBackground__fallback {
+  background:
+    radial-gradient(circle at 18% 24%, rgba(255, 255, 255, 0.08) 0%, transparent 22%),
+    radial-gradient(circle at 78% 76%, rgba(255, 255, 255, 0.08) 0%, transparent 20%),
+    linear-gradient(180deg, #020202 0%, #000000 50%, #020202 100%);
+}
+
+.galaxyBackground__vignette {
+  background:
+    radial-gradient(circle at 50% 46%, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.12) 54%, rgba(0, 0, 0, 0.5) 100%),
+    linear-gradient(90deg, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0.08) 18%, rgba(0, 0, 0, 0.08) 82%, rgba(0, 0, 0, 0.6) 100%);
+}
+
+.galaxyBackground__grain {
+  opacity: 0.035;
+  mix-blend-mode: soft-light;
+  background-image:
+    radial-gradient(rgba(255, 255, 255, 0.75) 0.5px, transparent 0.5px),
+    radial-gradient(rgba(255, 255, 255, 0.24) 0.5px, transparent 0.5px);
+  background-size: 18px 18px, 26px 26px;
+  background-position: 0 0, 11px 9px;
+}

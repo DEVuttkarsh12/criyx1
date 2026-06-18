@@ -1,0 +1,40 @@
+.sideRaysBackdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at 86% 0%, rgba(212, 109, 56, 0.18) 0%, rgba(212, 109, 56, 0) 28%),
+    linear-gradient(180deg, #030202 0%, #060303 44%, #000000 100%);
+}
+
+.sideRaysBackdrop__layer,
+.sideRaysBackdrop__bloom,
+.sideRaysBackdrop__vignette {
+  position: absolute;
+  inset: 0;
+}
+
+.sideRaysBackdrop__layer {
+  opacity: 0.96;
+}
+
+.sideRaysBackdrop__bloom {
+  background:
+    radial-gradient(circle at 100% 0%, rgba(246, 201, 104, 0.18) 0%, rgba(246, 201, 104, 0.08) 14%, rgba(246, 201, 104, 0) 34%),
+    linear-gradient(135deg, rgba(212, 109, 56, 0) 34%, rgba(212, 109, 56, 0.08) 62%, rgba(212, 109, 56, 0) 84%);
+  mix-blend-mode: screen;
+}
+
+.sideRaysBackdrop__vignette {
+  background:
+    radial-gradient(circle at 50% 44%, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.2) 55%, rgba(0, 0, 0, 0.72) 100%),
+    linear-gradient(90deg, rgba(0, 0, 0, 0.56) 0%, rgba(0, 0, 0, 0.06) 18%, rgba(0, 0, 0, 0.06) 82%, rgba(0, 0, 0, 0.58) 100%);
+}
+
+@media (max-width: 960px) {
+  .sideRaysBackdrop__layer {
+    opacity: 0.82;
+  }
+}

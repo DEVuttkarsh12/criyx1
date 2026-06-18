@@ -1,10 +1,9 @@
 export const navItems = [
-  { label: 'Services', to: '/services' },
   { label: 'Why us', to: '/why-us' },
   { label: 'Benefits', to: '/benefits' },
-  { label: 'Features', to: '/features' },
   { label: 'Process', to: '/process' },
   { label: 'FAQ', to: '/faq' },
+  { label: 'Contact', to: '/contact' },
 ];
 
 export const productPages = [
@@ -1194,47 +1193,533 @@ export const processJourney = [
   },
 ];
 
+export const servicePages = [
+  {
+    slug: 'ai-automation',
+    label: 'AI Automation',
+    eyebrow: 'Services',
+    overviewBody:
+      'Automation systems that reduce repetitive work, improve routing, and keep business execution moving with more consistency.',
+    bullets: [
+      'Workflow orchestration for internal operations and customer-facing tasks.',
+      'Approval logic, exception handling, and fallback paths for sensitive actions.',
+      'Reporting and summaries that keep operators and managers in control.',
+    ],
+    title:
+      'AI automation systems built to remove repetitive operational work without removing operational oversight.',
+    intro:
+      'Criyx designs automation systems for teams that need work to move faster, cleaner, and with less manual coordination. The focus is not only triggering actions. It is building a dependable operating flow with routing logic, approvals, context retrieval, summaries, and reporting so the process remains usable once volume grows.',
+    stats: [
+      {
+        value: 'Faster',
+        label: 'Reduce turnaround time between new information and the action the business should take next.',
+      },
+      {
+        value: 'Safer',
+        label: 'Approval gates and fallback rules keep sensitive workflow steps from becoming uncontrolled automations.',
+      },
+      {
+        value: 'Clearer',
+        label: 'Structured logs, summaries, and visibility make the system easier to trust and operate.',
+      },
+    ],
+    pillars: [
+      {
+        title: 'Workflow-first design',
+        body:
+          'We map how work really moves, who owns the decision, what context is required, and where repetitive effort is slowing the business down before automation is introduced.',
+      },
+      {
+        title: 'Controlled execution',
+        body:
+          'Automations are built with conditions, approvals, escalation paths, and exception handling so the workflow remains dependable under real operating pressure.',
+      },
+      {
+        title: 'Operational visibility',
+        body:
+          'Teams get summaries, status signals, and reporting surfaces that make the automation understandable after launch rather than opaque in production.',
+      },
+    ],
+    journey: [
+      {
+        step: '01',
+        title: 'Map the repetitive workflow',
+        body:
+          'We document where the process starts, what data it needs, which people are involved, and where delay or inconsistency is currently introduced.',
+      },
+      {
+        step: '02',
+        title: 'Design the automation logic',
+        body:
+          'Criyx defines triggers, decision points, escalations, approvals, summaries, and fallback behavior so the workflow is production-ready before implementation.',
+      },
+      {
+        step: '03',
+        title: 'Launch with reporting and controls',
+        body:
+          'The finished system includes the operator views, notifications, and audit signals required to manage the workflow once it is live.',
+      },
+    ],
+    useCases: [
+      {
+        title: 'Lead qualification and routing',
+        body:
+          'Incoming requests can be categorized, enriched, prioritized, and handed to the correct person or queue without forcing teams to repeat the same intake work all day.',
+      },
+      {
+        title: 'Support and escalation workflows',
+        body:
+          'Tickets, service requests, and internal issues can be summarized, tagged, routed, and escalated based on urgency, ownership, and workflow rules.',
+      },
+      {
+        title: 'Internal reporting and review packs',
+        body:
+          'Performance data, operations updates, and workflow outcomes can be turned into concise summaries leaders can actually use.',
+      },
+    ],
+    modules: [
+      {
+        title: 'Automation layer',
+        points: [
+          'Trigger design for routine tasks and recurring operations.',
+          'Conditional routing and escalation logic for edge cases.',
+          'Approval gates for actions that should not run unattended.',
+        ],
+      },
+      {
+        title: 'Context layer',
+        points: [
+          'Structured business inputs pulled from the systems the workflow depends on.',
+          'Knowledge retrieval to keep outputs grounded in approved information.',
+          'Summary logic that preserves the details teams still need after handoff.',
+        ],
+      },
+      {
+        title: 'Control layer',
+        points: [
+          'Status tracking and reporting surfaces for operators and managers.',
+          'Fallback handling for low-confidence or out-of-scope cases.',
+          'Operational logs that make the workflow auditable after launch.',
+        ],
+      },
+    ],
+    faqs: [
+      {
+        question: 'Where does automation usually create the most value?',
+        answer:
+          'It usually creates the most value in workflows with repeated decisions, repeated handoffs, or repeated admin effort. The strongest candidates are the processes teams already know are costing them time every day.',
+      },
+      {
+        question: 'Can the automation still leave room for human review?',
+        answer:
+          'Yes. Criyx usually keeps humans in the loop wherever approvals, judgment, or exception handling matter. The goal is to reduce repetitive work, not remove control from the people who own the process.',
+      },
+    ],
+    ctaTitle:
+      'If your team repeats the same routing, follow-up, and review work every day, automation should reduce that load without making the workflow harder to trust.',
+    ctaBody:
+      'Criyx scopes the triggers, approvals, integrations, and reporting needed to make the automation operationally reliable.',
+  },
+  {
+    slug: 'ai-agents',
+    label: 'AI Agents',
+    eyebrow: 'Services',
+    overviewBody:
+      'Agent systems that can reason within guardrails, use tools, retrieve context, and complete multi-step workflow tasks.',
+    bullets: [
+      'Task agents for research, documentation, triage, and coordination.',
+      'Controlled tool usage with scope boundaries and escalation behavior.',
+      'Agent systems designed around real workflow ownership instead of demos.',
+    ],
+    title:
+      'AI agent systems designed to complete structured work inside real business workflows, not just generate responses.',
+    intro:
+      'Criyx builds agent systems for teams that need more than basic chat output. These systems retrieve context, use tools, take multi-step actions, and stay bounded by workflow logic so they can support real operations without becoming unpredictable.',
+    stats: [
+      {
+        value: 'Multi-step',
+        label: 'Designed for workflows that require retrieval, reasoning, action, and handoff in one sequence.',
+      },
+      {
+        value: 'Bounded',
+        label: 'Guardrails define what the agent can do, what it must escalate, and where it should stop.',
+      },
+      {
+        value: 'Integrated',
+        label: 'Agent behavior is connected to business tools, rules, and reporting instead of running in isolation.',
+      },
+    ],
+    pillars: [
+      {
+        title: 'Task-bound autonomy',
+        body:
+          'A useful agent should complete a defined class of work well. Criyx scopes the task boundaries carefully so the system stays helpful without drifting beyond what it should own.',
+      },
+      {
+        title: 'Tool and context orchestration',
+        body:
+          'Agents become more valuable when they can retrieve the right context, inspect tools, and use workflow logic to decide what should happen next.',
+      },
+      {
+        title: 'Escalation by design',
+        body:
+          'The system should know when not to proceed. That is why escalation rules, fallback behavior, and operator visibility are treated as core product requirements.',
+      },
+    ],
+    journey: [
+      {
+        step: '01',
+        title: 'Define the agent task and limits',
+        body:
+          'We identify which workflow the agent will support, what actions it can take, what context it can use, and what conditions require escalation.',
+      },
+      {
+        step: '02',
+        title: 'Connect tools and decision logic',
+        body:
+          'Criyx wires the agent into retrieval layers, external tools, internal systems, and control rules so it acts within a usable operating flow.',
+      },
+      {
+        step: '03',
+        title: 'Launch with oversight',
+        body:
+          'The result includes monitoring, summaries, and operator review points so the team can trust the agent once it is in production.',
+      },
+    ],
+    useCases: [
+      {
+        title: 'Research and document handling',
+        body:
+          'Agents can gather context, compare sources, draft outputs, and prepare review-ready summaries for internal teams.',
+      },
+      {
+        title: 'Sales and support coordination',
+        body:
+          'Operational agents can assist with intake, follow-up, case summaries, and next-step recommendations across customer-facing workflows.',
+      },
+      {
+        title: 'Marketing and content support',
+        body:
+          'Agent systems can help plan deliverables, generate structured outputs, route approvals, and keep campaign work moving with less coordination overhead.',
+      },
+    ],
+    modules: [
+      {
+        title: 'Reasoning layer',
+        points: [
+          'Prompt and instruction design for stable task execution.',
+          'Decision boundaries that limit where the agent is allowed to act.',
+          'Fallback logic for ambiguous or incomplete inputs.',
+        ],
+      },
+      {
+        title: 'Tool layer',
+        points: [
+          'Controlled tool use for retrieval, updates, notifications, and workflow actions.',
+          'System permissions scoped to the tasks the agent is meant to support.',
+          'Sequencing for multi-step workflows with explicit checkpoints.',
+        ],
+      },
+      {
+        title: 'Governance layer',
+        points: [
+          'Human review and escalation flows for sensitive moments.',
+          'Visibility into actions taken, outputs produced, and next steps triggered.',
+          'Reporting that helps the team tune reliability after launch.',
+        ],
+      },
+    ],
+    faqs: [
+      {
+        question: 'What makes an agent different from a normal AI workflow?',
+        answer:
+          'An agent is useful when the workflow needs bounded autonomy across several steps, not just one output. That usually means retrieval, decision logic, tool use, and action sequencing inside one controlled flow.',
+      },
+      {
+        question: 'How do you keep the agent from becoming unreliable?',
+        answer:
+          'By limiting scope, grounding context, defining escalation rules, and attaching the agent to a workflow with visibility. Reliability usually improves when autonomy is carefully shaped instead of broadly promised.',
+      },
+    ],
+    ctaTitle:
+      'If the workflow needs retrieval, reasoning, and action in one connected system, an agent may be the right service model.',
+    ctaBody:
+      'Criyx defines the boundaries, tools, review logic, and reporting needed to make that agent operationally useful.',
+  },
+  {
+    slug: 'voice-media-agents',
+    label: 'Voice and Media Agents',
+    eyebrow: 'Services',
+    overviewBody:
+      'Voice-led and media-led AI systems for qualification, intake, support, branded interactions, and content-heavy workflows.',
+    bullets: [
+      'Voice agents for qualification, intake, support, and guided response.',
+      'Media workflows where visual or voice output improves the operating process.',
+      'Brand-consistent interaction design with controlled escalation paths.',
+    ],
+    title:
+      'Voice and media agent systems built for teams that need AI interaction to be immediate, structured, and operationally useful.',
+    intro:
+      'Criyx builds voice and media-oriented agent workflows when the business benefits from spoken interaction, guided response, branded delivery, or media generation as part of the operating process. The focus stays on usefulness, control, and continuity rather than novelty.',
+    stats: [
+      {
+        value: 'Responsive',
+        label: 'Designed for workflows where immediate interaction matters, such as qualification, intake, or guided support.',
+      },
+      {
+        value: 'Structured',
+        label: 'Conversation and media flows are shaped around the fields, outcomes, and routing decisions the business actually needs.',
+      },
+      {
+        value: 'Brand-safe',
+        label: 'Tone, output structure, and escalation rules are defined so the experience remains consistent.',
+      },
+    ],
+    pillars: [
+      {
+        title: 'Voice-first workflow design',
+        body:
+          'The interaction is structured around the data the workflow needs, not just around making the conversation sound natural.',
+      },
+      {
+        title: 'Contextual response systems',
+        body:
+          'Voice and media agents can retrieve approved information, evaluate intent, and decide whether they should answer, qualify further, or hand off.',
+      },
+      {
+        title: 'Operational continuity',
+        body:
+          'Every interaction should produce usable context for the next person or system in the workflow rather than leaving teams with disconnected transcripts or assets.',
+      },
+    ],
+    journey: [
+      {
+        step: '01',
+        title: 'Define the interaction path',
+        body:
+          'We map what the user should be asked, what the system must capture, and what outcomes the interaction is meant to produce.',
+      },
+      {
+        step: '02',
+        title: 'Build the response and routing flow',
+        body:
+          'Criyx configures the voice or media behavior, context retrieval, routing logic, and escalation conditions required for real production use.',
+      },
+      {
+        step: '03',
+        title: 'Connect the outcome to the workflow',
+        body:
+          'The interaction result is logged, routed, summarized, and handed to the right system or person so nothing useful is lost after the conversation ends.',
+      },
+    ],
+    useCases: [
+      {
+        title: 'Inbound qualification and intake',
+        body:
+          'Voice agents can capture structured customer details, route requests, and prepare clean handoffs without making teams repeat the same questions manually.',
+      },
+      {
+        title: 'Guided support and information response',
+        body:
+          'Businesses with repetitive information requests can use voice-led response systems grounded in approved knowledge and escalation logic.',
+      },
+      {
+        title: 'Media generation workflows',
+        body:
+          'Where visual or voice output supports the business process, Criyx can design generation pipelines with review checkpoints and brand controls.',
+      },
+    ],
+    modules: [
+      {
+        title: 'Interaction layer',
+        points: [
+          'Voice, response, or media output design aligned to workflow needs.',
+          'Structured conversational paths instead of open-ended drift.',
+          'Tone controls for brand consistency and clarity.',
+        ],
+      },
+      {
+        title: 'Workflow layer',
+        points: [
+          'Routing rules for intake, qualification, escalation, and follow-up.',
+          'Integration with CRM, support, calendar, or internal systems.',
+          'Outcome logging so each interaction creates a usable next step.',
+        ],
+      },
+      {
+        title: 'Control layer',
+        points: [
+          'Review flows for sensitive or low-confidence moments.',
+          'Audit visibility into what the system said, decided, and triggered.',
+          'Performance signals around transfer, conversion, and exception patterns.',
+        ],
+      },
+    ],
+    faqs: [
+      {
+        question: 'When do voice agents make the most sense?',
+        answer:
+          'They make the most sense when the first stage of a workflow is repetitive, structured, and time-sensitive, especially for qualification, intake, support triage, or guided customer response.',
+      },
+      {
+        question: 'Can these systems still hand off to a person cleanly?',
+        answer:
+          'Yes. Criyx treats handoff design as a core part of the system so the human receives context, the workflow remains continuous, and the user is not trapped in a dead end.',
+      },
+    ],
+    ctaTitle:
+      'If a workflow depends on fast, structured interaction, voice and media agents should improve speed without making the process harder to control.',
+    ctaBody:
+      'Criyx scopes the interaction design, context layer, escalation logic, and follow-through systems that make that possible.',
+  },
+  {
+    slug: 'custom-software',
+    label: 'Custom Software and Apps',
+    eyebrow: 'Services',
+    overviewBody:
+      'Custom software, internal apps, and operator-facing products that give AI systems a usable interface and a reliable operating surface.',
+    bullets: [
+      'Internal tools, dashboards, workflow panels, and customer-facing apps.',
+      'Software built around automation, approvals, visibility, and control.',
+      'Operator-ready interfaces that make AI systems easier to trust and maintain.',
+    ],
+    title:
+      'Custom software and internal apps built around the workflow so AI systems have a usable operating surface, not just a backend process.',
+    intro:
+      'Many business problems are not solved by orchestration alone. Teams often need a software layer to review outputs, approve actions, inspect context, track exceptions, and manage the workflow day to day. Criyx builds that layer as part of the system so the AI work is actually usable after deployment.',
+    stats: [
+      {
+        value: 'Operator-ready',
+        label: 'Interfaces are designed for the people who need to review, approve, and act on workflow outputs.',
+      },
+      {
+        value: 'Integrated',
+        label: 'Apps connect the automation layer, the data context, and the team using the system.',
+      },
+      {
+        value: 'Scalable',
+        label: 'A well-designed software surface keeps the workflow understandable as usage, volume, and team size grow.',
+      },
+    ],
+    pillars: [
+      {
+        title: 'Workflow-native interfaces',
+        body:
+          'The software should reflect how the team actually works, not force operators to adapt to a generic panel with no operational context.',
+      },
+      {
+        title: 'Visibility and action in one place',
+        body:
+          'Teams need the context, status, approvals, and next actions connected inside the same interface so they can work without jumping across scattered tools.',
+      },
+      {
+        title: 'AI made usable',
+        body:
+          'The software layer is where AI outputs become operationally trustworthy because people can inspect them, correct them, and act on them in a structured way.',
+      },
+    ],
+    journey: [
+      {
+        step: '01',
+        title: 'Define the software surface',
+        body:
+          'We map what the user needs to see, what they need to decide, and what workflow actions the interface must support.',
+      },
+      {
+        step: '02',
+        title: 'Connect the app to the operating system',
+        body:
+          'Criyx wires the interface into data sources, workflow logic, reporting, and approvals so the software supports the real process instead of sitting beside it.',
+      },
+      {
+        step: '03',
+        title: 'Launch an operator-ready tool',
+        body:
+          'The end result is a maintainable app or internal tool that helps the business use the automation and agent layer with more confidence.',
+      },
+    ],
+    useCases: [
+      {
+        title: 'Internal review and approval panels',
+        body:
+          'Create interfaces where teams can inspect AI outputs, approve actions, manage exceptions, and keep the workflow moving.',
+      },
+      {
+        title: 'Workflow dashboards and management apps',
+        body:
+          'Build internal tools that bring status, performance, ownership, and action controls into one usable operating surface.',
+      },
+      {
+        title: 'Customer-facing workflow products',
+        body:
+          'Where the use case calls for it, Criyx can build web apps or lightweight platforms that connect the AI layer directly to customers or partners.',
+      },
+    ],
+    modules: [
+      {
+        title: 'Interface layer',
+        points: [
+          'Workflow-specific screens for review, action, and status visibility.',
+          'Design systems aligned to clarity, speed, and operator confidence.',
+          'Interaction patterns that reduce admin effort instead of adding more steps.',
+        ],
+      },
+      {
+        title: 'System layer',
+        points: [
+          'Integrations with automations, agents, databases, and business tools.',
+          'Permissions and ownership paths suited to the actual workflow.',
+          'Reporting connections that keep the app useful to both operators and leadership.',
+        ],
+      },
+      {
+        title: 'Maintainability layer',
+        points: [
+          'Documentation and structure that make the software easier to evolve.',
+          'Visibility into workflow state, exceptions, and manual overrides.',
+          'A build approach designed for long-term operational use, not a one-off prototype.',
+        ],
+      },
+    ],
+    faqs: [
+      {
+        question: 'Why build software if the automation already works?',
+        answer:
+          'Because many workflows still need an operating surface. Teams often need to review, approve, track, inspect, and manage what the automation is doing. Without that layer, the system can become harder to trust as it grows.',
+      },
+      {
+        question: 'Is this only for internal tools?',
+        answer:
+          'No. Internal tools are common, but Criyx can also build customer-facing apps or lightweight platforms when the business process benefits from a dedicated product surface.',
+      },
+    ],
+    ctaTitle:
+      'If your workflow needs a real interface for people to review, approve, and manage AI-driven work, custom software is usually part of the right solution.',
+    ctaBody:
+      'Criyx builds that software layer so the automation and agent system stays usable in day-to-day operations.',
+  },
+];
+
+export const serviceNavItems = servicePages.map((service) => ({
+  label: service.label,
+  to: `/services/${service.slug}`,
+}));
+
+export const serviceCatalog = servicePages.map((service) => ({
+  id: service.slug,
+  title: service.label,
+  body: service.overviewBody,
+  bullets: service.bullets,
+  to: `/services/${service.slug}`,
+}));
+
 export const serviceCategories = [
-  {
-    title: 'AI automations',
-    body:
-      'We design and build AI-assisted workflows that reduce repetitive work, improve routing, summarize information, and help teams act faster without sacrificing control.',
-    bullets: [
-      'Workflow orchestration for internal operations and customer-facing flows.',
-      'Advanced automation with approval logic, fallback paths, and exception handling.',
-      'Reporting, summaries, and decision support systems built around live business context.',
-    ],
-  },
-  {
-    title: 'AI agents',
-    body:
-      'Criyx builds agent-style systems that can reason within defined boundaries, use tools, retrieve context, and complete multi-step tasks as part of a real business process.',
-    bullets: [
-      'Task agents for research, triage, documentation, and internal coordination.',
-      'Marketing and content agents for campaign support, distribution workflows, and structured output generation.',
-      'Operational agents that support sales, support, and back-office teams with controlled autonomy.',
-    ],
-  },
-  {
-    title: 'Voice and media agents',
-    body:
-      'We can create voice-facing and media-facing workflows that combine model intelligence with practical interfaces and automation layers.',
-    bullets: [
-      'Voice agents for qualification, intake, and guided interactions.',
-      'Voice cloning and response workflows where brand or persona consistency matters.',
-      'Video assistance, video automation, and media generation pipelines where the workflow benefits from visual output.',
-    ],
-  },
-  {
-    title: 'Custom software and apps',
-    body:
-      'When the workflow needs a dedicated interface, Criyx builds the supporting software layer around it, from internal tools to customer-facing applications.',
-    bullets: [
-      'Custom software tailored to AI-assisted business processes.',
-      'Internal apps, dashboards, and workflow control panels.',
-      'Web apps and lightweight platforms that connect your automation layer to the team that uses it.',
-    ],
-  },
+  ...servicePages.map((service) => ({
+    title: service.label,
+    body: service.overviewBody,
+    bullets: service.bullets,
+    to: `/services/${service.slug}`,
+  })),
 ];
 
 export const serviceHighlights = [
