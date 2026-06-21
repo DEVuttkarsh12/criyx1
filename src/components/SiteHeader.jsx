@@ -1,6 +1,7 @@
 import { useEffect, useId, useRef, useState } from 'react';
 import { Link, NavLink, useLocation } from 'react-router-dom';
-import brandLogo from '../../file.jpeg';
+import brandLogo from '../assets/brand-logo.avif';
+import StaggeredMenu from './StaggeredMenu';
 import { navItems, productNavItems, serviceNavItems } from '../data/siteContent';
 
 function HeaderLink({
@@ -22,7 +23,7 @@ function HeaderLink({
   );
 }
 
-const dropdownDescriptions = {
+const panelDescriptions = {
   Services: {
     'Workflow Automation': 'Systemized automations for ops-heavy handoffs.',
     'AI Voice Agent': 'Structured voice intake, support, and routing.',
@@ -39,72 +40,21 @@ const dropdownDescriptions = {
   },
 };
 
-function DropdownLink({ item, description, onClick, tabIndex }) {
+function DesktopPanelTrigger({ isActive, isOpen, label, onToggle, panelId }) {
   return (
-    <NavLink
-      className={({ isActive }) =>
-        `siteDropdown__link${isActive ? ' siteDropdown__link--active' : ''}`
-      }
-      onClick={onClick}
-      tabIndex={tabIndex}
-      to={item.to}
+    <button
+      aria-controls={panelId}
+      aria-expanded={isOpen}
+      aria-haspopup="dialog"
+      className={`siteNav__link siteNav__link--toggle${isActive || isOpen ? ' siteNav__link--active' : ''}`}
+      onClick={onToggle}
+      type="button"
     >
-      <span className="siteDropdown__linkCopy">
-        <span className="siteDropdown__linkLabel">{item.label}</span>
-        {description ? (
-          <span className="siteDropdown__linkDescription">{description}</span>
-        ) : null}
+      <span>{label}</span>
+      <span className="siteDropdown__icon" aria-hidden="true">
+        v
       </span>
-      <span className="siteDropdown__linkArrow" aria-hidden="true">
-        -&gt;
-      </span>
-    </NavLink>
-  );
-}
-
-function DesktopDropdown({ isOpen, items, label, activePrefix, onItemClick, onToggle }) {
-  const location = useLocation();
-  const menuId = useId();
-  const isActive = location.pathname.startsWith(activePrefix);
-  const descriptions = dropdownDescriptions[label] ?? {};
-
-  return (
-    <div
-      className={`siteDropdown siteDropdown__details${isActive ? ' siteDropdown--active' : ''}${isOpen ? ' is-open' : ''}`}
-    >
-      <button
-        aria-controls={menuId}
-        aria-expanded={isOpen}
-        aria-haspopup="menu"
-        className="siteNav__link siteNav__link--toggle"
-        onClick={onToggle}
-        type="button"
-      >
-        <span>{label}</span>
-        <span className="siteDropdown__icon" aria-hidden="true">
-          v
-        </span>
-      </button>
-      <div
-        aria-hidden={!isOpen}
-        className="siteDropdown__menu"
-        id={menuId}
-        role="menu"
-      >
-        <p className="siteDropdown__eyebrow">{label}</p>
-        <div className="siteDropdown__list">
-          {items.map((item) => (
-            <DropdownLink
-              description={descriptions[item.label]}
-              item={item}
-              key={item.to}
-              onClick={onItemClick}
-              tabIndex={isOpen ? 0 : -1}
-            />
-          ))}
-        </div>
-      </div>
-    </div>
+    </button>
   );
 }
 
@@ -135,44 +85,66 @@ function MobileDropdown({ label, items, onNavigate }) {
 export default function SiteHeader() {
   const location = useLocation();
   const headerRef = useRef(null);
-  const [activeDesktopDropdown, setActiveDesktopDropdown] = useState(null);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [desktopPanelState, setDesktopPanelState] = useState({
+    key: null,
+    open: false,
+  });
+
+  const panelId = useId();
+
+  const buildPanelItems = (items, label) =>
+    items.map((item) => ({
+      ariaLabel: `Open ${item.label}`,
+      description: panelDescriptions[label]?.[item.label],
+      label: item.label,
+      link: item.to,
+    }));
+
+  const desktopPanelConfigs = {
+    services: {
+      activePrefix: '/services',
+      buttonLabel: 'Services',
+      colors: ['#7a2e17', '#2b160f'],
+      description:
+        'Explore the automation systems, agent workflows, and custom builds Criyx delivers for real operating teams.',
+      eyebrow: 'Explore Services',
+      items: buildPanelItems(serviceNavItems, 'Services'),
+      title: 'Services',
+    },
+    products: {
+      activePrefix: '/products',
+      buttonLabel: 'Our Products',
+      colors: ['#7a2e17', '#2b160f'],
+      description:
+        'Browse the product layer behind Criyx deployments, from voice systems to internal tools and campaign execution agents.',
+      eyebrow: 'Explore Products',
+      items: buildPanelItems(productNavItems, 'Our Products'),
+      title: 'Our Products',
+    },
+  };
+
+  const activeDesktopPanel = desktopPanelState.key
+    ? desktopPanelConfigs[desktopPanelState.key]
+    : null;
 
   useEffect(() => {
     setMobileMenuOpen(false);
-    setActiveDesktopDropdown(null);
+    setDesktopPanelState((current) => ({ ...current, open: false }));
     document.querySelectorAll('.siteMobileDropdown[open]').forEach((element) => {
       element.removeAttribute('open');
     });
   }, [location.pathname]);
 
-  useEffect(() => {
-    if (!activeDesktopDropdown) {
-      return undefined;
-    }
-
-    const handlePointerDown = (event) => {
-      if (headerRef.current?.contains(event.target)) {
-        return;
+  const toggleDesktopPanel = (key) => {
+    setDesktopPanelState((current) => {
+      if (current.key === key) {
+        return { ...current, open: !current.open };
       }
 
-      setActiveDesktopDropdown(null);
-    };
-
-    const handleKeyDown = (event) => {
-      if (event.key === 'Escape') {
-        setActiveDesktopDropdown(null);
-      }
-    };
-
-    document.addEventListener('pointerdown', handlePointerDown);
-    document.addEventListener('keydown', handleKeyDown);
-
-    return () => {
-      document.removeEventListener('pointerdown', handlePointerDown);
-      document.removeEventListener('keydown', handleKeyDown);
-    };
-  }, [activeDesktopDropdown]);
+      return { key, open: true };
+    });
+  };
 
   return (
     <header className="siteHeader siteHeader--classic" ref={headerRef}>
@@ -185,29 +157,19 @@ export default function SiteHeader() {
 
       <div className="siteHeader__navWrap">
         <nav className="siteNav" aria-label="Primary">
-          <DesktopDropdown
-            activePrefix="/services"
-            isOpen={activeDesktopDropdown === 'Services'}
-            items={serviceNavItems}
-            label="Services"
-            onItemClick={() => setActiveDesktopDropdown(null)}
-            onToggle={() =>
-              setActiveDesktopDropdown((current) =>
-                current === 'Services' ? null : 'Services',
-              )
-            }
+          <DesktopPanelTrigger
+            isActive={location.pathname.startsWith(desktopPanelConfigs.services.activePrefix)}
+            isOpen={desktopPanelState.key === 'services' && desktopPanelState.open}
+            label={desktopPanelConfigs.services.buttonLabel}
+            onToggle={() => toggleDesktopPanel('services')}
+            panelId={panelId}
           />
-          <DesktopDropdown
-            activePrefix="/products"
-            isOpen={activeDesktopDropdown === 'Our Products'}
-            items={productNavItems}
-            label="Our Products"
-            onItemClick={() => setActiveDesktopDropdown(null)}
-            onToggle={() =>
-              setActiveDesktopDropdown((current) =>
-                current === 'Our Products' ? null : 'Our Products',
-              )
-            }
+          <DesktopPanelTrigger
+            isActive={location.pathname.startsWith(desktopPanelConfigs.products.activePrefix)}
+            isOpen={desktopPanelState.key === 'products' && desktopPanelState.open}
+            label={desktopPanelConfigs.products.buttonLabel}
+            onToggle={() => toggleDesktopPanel('products')}
+            panelId={panelId}
           />
           {navItems.map((item) => (
             <HeaderLink item={item} key={item.to} />
@@ -249,6 +211,26 @@ export default function SiteHeader() {
             ))}
           </div>
         </div>
+      ) : null}
+
+      {activeDesktopPanel ? (
+        <StaggeredMenu
+          key={desktopPanelState.key}
+          accentColor="#c65c37"
+          className="siteHeader__panelMenu"
+          colors={activeDesktopPanel.colors}
+          description={activeDesktopPanel.description}
+          displayItemNumbering
+          eyebrow={activeDesktopPanel.eyebrow}
+          items={activeDesktopPanel.items}
+          onOpenChange={(open) =>
+            setDesktopPanelState((current) => ({ ...current, open }))
+          }
+          open={desktopPanelState.open}
+          panelId={panelId}
+          showToggle={false}
+          title={activeDesktopPanel.title}
+        />
       ) : null}
     </header>
   );

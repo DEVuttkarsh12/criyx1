@@ -1,5 +1,6 @@
 import { lazy, Suspense, useEffect, useState } from 'react';
 import { Outlet } from 'react-router-dom';
+import SiteFooter from './SiteFooter';
 import SiteHeader from './SiteHeader';
 
 const DepthGlobeBackdrop = lazy(() => import('./DepthGlobeBackdrop'));
@@ -29,7 +30,7 @@ export default function SiteLayout() {
       </Suspense>
       <Suspense fallback={null}>
         <TargetCursor
-          targetSelector=".brand, .siteNav__link, .siteDropdown__link, .siteHeader__mobileToggle, .siteMobileDropdown__summary, .siteMobileNav__link, .button, .techCard, .statCard, .whyCard, .proofCard, .detailCard, .serviceCard, .capabilityCard, .visualSlide, .spotlightPanel, .processNode, .processStage, .faqItem__summary"
+          targetSelector=".brand, .siteNav__link, .siteDropdown__link, .sm-panel-item, .sm-secondary-link, .siteHeader__mobileToggle, .siteMobileDropdown__summary, .siteMobileNav__link, .button, .techCard, .statCard, .whyCard, .proofCard, .detailCard, .serviceCard, .capabilityCard, .visualSlide, .spotlightPanel, .processNode, .processStage, .faqItem__summary"
           spinDuration={2.4}
           hideDefaultCursor={true}
           hoverDuration={0.18}
@@ -39,6 +40,7 @@ export default function SiteLayout() {
       <div className="app__canvas">
         <SiteHeader />
         <Outlet />
+        <SiteFooter />
       </div>
     </main>
   );
