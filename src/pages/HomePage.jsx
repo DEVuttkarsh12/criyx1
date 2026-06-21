@@ -183,7 +183,7 @@ export default function HomePage() {
     <>
       <section className="hero" aria-labelledby="hero-title" id="hero">
         <div className="hero__content">
-          <p className="hero__badge">Trusted by 30+ companies like yours</p>
+          <p className="hero__badge reveal">Trusted by 30+ companies like yours</p>
           <h1 className="hero__title" id="hero-title">
             {heroTitleLines.map((line) => (
               <span
@@ -194,7 +194,7 @@ export default function HomePage() {
               </span>
             ))}
           </h1>
-          <div className="hero__actions">
+          <div className="hero__actions reveal reveal--delay-1">
             <Link className="button button--secondary" to="/services">
               Services
               <span aria-hidden="true">-&gt;</span>
@@ -204,13 +204,13 @@ export default function HomePage() {
               <span aria-hidden="true">-&gt;</span>
             </Link>
           </div>
-          <p className="hero__description">
+          <p className="hero__description reveal reveal--delay-2">
             Criyx builds AI automation, custom software, and workflow systems
             designed to solve operational bottlenecks and remove repetitive work
             at scale.
           </p>
           <section
-            className="hero__technologies"
+            className="hero__technologies reveal reveal--delay-3"
             aria-labelledby="technologies-title"
             id="technologies"
           >
@@ -253,26 +253,32 @@ export default function HomePage() {
       >
         <div className="founderFeature__layout">
           <div className="founderFeature__copy">
-            <p className="founderFeature__eyebrow">From the Founder</p>
-            <h2 className="founderFeature__title" id="founder-feature-title">
+            <p className="founderFeature__eyebrow reveal">From the Founder</p>
+            <h2
+              className="founderFeature__title reveal reveal--delay-1"
+              id="founder-feature-title"
+            >
               {typedFounderTitle || '\u00A0'}
               <span
                 className={`founderFeature__typeCursor${typedFounderTitle.length >= founderTitle.length ? ' founderFeature__typeCursor--hidden' : ''}`}
                 aria-hidden="true"
               />
             </h2>
-            <p className="founderFeature__body">
+            <p className="founderFeature__body reveal reveal--delay-2">
               Entrepreneur. AI Solutions Architect. The face behind Criyx.
               Dikshant is building the company around a simple standard: AI
               should improve the way a business actually operates, not just
               look impressive in a pitch.
             </p>
-            <p className="founderFeature__body">
+            <p className="founderFeature__body reveal reveal--delay-3">
               That is what Criyx is meant to stand for: sharper workflow
               design, cleaner decision paths, and systems that stay useful once
               real operators, exceptions, and scale enter the picture.
             </p>
-            <div className="founderFeature__principles" aria-label="Founder signals">
+            <div
+              className="founderFeature__principles reveal reveal--delay-4"
+              aria-label="Founder signals"
+            >
               {founderSignals.map((principle) => (
                 <span className="founderFeature__principle" key={principle}>
                   {principle}
@@ -281,7 +287,7 @@ export default function HomePage() {
             </div>
           </div>
 
-          <div className="founderFeature__visual">
+          <div className="founderFeature__visual reveal reveal--delay-2">
             <figure className="founderFeature__portraitComposition">
               <div className="founderFeature__portraitPlate" aria-hidden="true" />
               <div className="founderFeature__portraitPlaceholder">
@@ -299,12 +305,15 @@ export default function HomePage() {
                 </figcaption>
               </div>
 
-              <blockquote className="founderFeature__quoteCard">
+              <blockquote className="founderFeature__quoteCard reveal reveal--delay-3">
                 <p className="founderFeature__quoteText">“{founderQuote}”</p>
                 <p className="founderFeature__quoteMeta">Guiding principle behind Criyx</p>
               </blockquote>
 
-              <div className="founderFeature__noteCard" aria-hidden="true">
+              <div
+                className="founderFeature__noteCard reveal reveal--delay-4"
+                aria-hidden="true"
+              >
                 <span className="founderFeature__noteLabel">Operator note</span>
                 <span className="founderFeature__noteValue">
                   Built for execution, not presentation theater.
@@ -318,11 +327,14 @@ export default function HomePage() {
       <section className="explorePages" aria-labelledby="explore-pages-title">
         <div className="explorePages__content">
           <div className="explorePages__intro">
-            <p className="explorePages__eyebrow">Explore Pages</p>
-            <h2 className="explorePages__title" id="explore-pages-title">
+            <p className="explorePages__eyebrow reveal">Explore Pages</p>
+            <h2
+              className="explorePages__title reveal reveal--delay-1"
+              id="explore-pages-title"
+            >
               Move through the site without losing the thread.
             </h2>
-            <p className="explorePages__body">
+            <p className="explorePages__body reveal reveal--delay-2">
               Each page is built to answer a specific part of the decision:
               what Criyx does, how the work is delivered, why the approach
               holds, and where to start if the workflow problem is already
@@ -337,7 +349,7 @@ export default function HomePage() {
                   aria-controls={panelId}
                   aria-expanded={activeExplorePanel === page.panelKey}
                   aria-haspopup="dialog"
-                  className="explorePages__item explorePages__item--button cursor-target"
+                  className={`explorePages__item explorePages__item--button cursor-target reveal reveal--delay-${(Number(page.meta) - 1) % 4 + 1}`}
                   key={page.label}
                   onClick={() =>
                     setActiveExplorePanel((current) =>
@@ -358,7 +370,7 @@ export default function HomePage() {
                 </button>
               ) : (
                 <Link
-                  className="explorePages__item cursor-target"
+                  className={`explorePages__item cursor-target reveal reveal--delay-${(Number(page.meta) - 1) % 4 + 1}`}
                   key={page.to}
                   role="listitem"
                   to={page.to}

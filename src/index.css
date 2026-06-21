@@ -2415,24 +2415,35 @@ a {
 
 .reveal {
   opacity: 0;
-  transform: translateY(28px);
-  animation: revealUp var(--motion-duration-base) var(--motion-ease-enter) forwards;
+  transform: translate3d(0, 32px, 0) scale(0.985);
+  filter: blur(12px);
+  will-change: opacity, transform, filter;
+  transition:
+    opacity 1100ms cubic-bezier(0.2, 0.9, 0.24, 1) var(--reveal-delay, 0ms),
+    transform 1100ms cubic-bezier(0.2, 0.9, 0.24, 1) var(--reveal-delay, 0ms),
+    filter 1100ms cubic-bezier(0.2, 0.9, 0.24, 1) var(--reveal-delay, 0ms);
+}
+
+.reveal--is-visible {
+  opacity: 1;
+  transform: translate3d(0, 0, 0) scale(1);
+  filter: blur(0);
 }
 
 .reveal--delay-1 {
-  animation-delay: 90ms;
+  --reveal-delay: 100ms;
 }
 
 .reveal--delay-2 {
-  animation-delay: 180ms;
+  --reveal-delay: 200ms;
 }
 
 .reveal--delay-3 {
-  animation-delay: 270ms;
+  --reveal-delay: 300ms;
 }
 
 .reveal--delay-4 {
-  animation-delay: 360ms;
+  --reveal-delay: 400ms;
 }
 
 @keyframes revealUp {
@@ -3033,6 +3044,7 @@ a {
     animation: none;
     transition: none;
     transform: none;
+    filter: none;
     opacity: 1;
   }
 }
