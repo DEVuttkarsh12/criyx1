@@ -40,6 +40,9 @@
 .logoloop__list {
   display: flex;
   align-items: center;
+  margin: 0;
+  padding: 0;
+  list-style: none;
 }
 
 .logoloop--vertical .logoloop__list {
@@ -49,6 +52,7 @@
 .logoloop__item {
   flex: 0 0 auto;
   margin-right: var(--logoloop-gap);
+  list-style: none;
   font-size: var(--logoloop-logoHeight);
   line-height: 1;
 }
