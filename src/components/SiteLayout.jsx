@@ -72,7 +72,7 @@ export default function SiteLayout() {
       </Suspense>
       <Suspense fallback={null}>
         <TargetCursor
-          targetSelector=".brand, .siteNav__link, .siteDropdown__link, .sm-panel-item, .sm-secondary-link, .siteHeader__mobileToggle, .siteMobileDropdown__summary, .siteMobileNav__link, .button, .techCard, .statCard, .whyCard, .proofCard, .detailCard, .serviceCard, .capabilityCard, .visualSlide, .spotlightPanel, .processNode, .processStage, .faqItem__summary"
+          targetSelector=".brand, .siteNav__link, .siteDropdown__link, .sm-panel-item, .sm-secondary-link, .siteHeader__mobileToggle, .siteMobileNav__link, .siteMobileNav__backButton, .button, .techCard, .statCard, .whyCard, .proofCard, .detailCard, .serviceCard, .capabilityCard, .visualSlide, .spotlightPanel, .processNode, .processStage, .faqItem__summary"
           spinDuration={2.4}
           hideDefaultCursor={true}
           hoverDuration={0.18}

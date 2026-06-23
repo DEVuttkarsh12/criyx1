@@ -58,17 +58,46 @@ function DesktopPanelTrigger({ isActive, isOpen, label, onToggle, panelId }) {
   );
 }
 
-function MobileDropdown({ label, items, onNavigate }) {
+function MobileMenuTrigger({ isActive, label, onClick }) {
   return (
-    <details className="siteMobileDropdown">
-      <summary className="siteMobileDropdown__summary">
-        <span>{label}</span>
-        <span className="siteMobileDropdown__icon" aria-hidden="true">
-          v
-        </span>
-      </summary>
-      <div className="siteMobileDropdown__list">
-        {items.map((item) => (
+    <button
+      className={`siteMobileNav__link siteMobileNav__link--trigger${
+        isActive ? ' siteMobileNav__link--active' : ''
+      }`}
+      onClick={onClick}
+      type="button"
+    >
+      <span>{label}</span>
+      <span className="siteMobileNav__linkArrow" aria-hidden="true">
+        &rarr;
+      </span>
+    </button>
+  );
+}
+
+function MobileSubmenuPanel({ config, isOpen, onBack, onNavigate }) {
+  return (
+    <section
+      aria-hidden={!isOpen}
+      className={`siteMobileNav__subpanel${isOpen ? ' siteMobileNav__subpanel--open' : ''}`}
+    >
+      <div className="siteMobileNav__subpanelHeader">
+        <button
+          aria-label="Back to main mobile navigation"
+          className="siteMobileNav__backButton"
+          onClick={onBack}
+          type="button"
+        >
+          <span aria-hidden="true">&larr;</span>
+        </button>
+        <div className="siteMobileNav__subpanelIntro">
+          <p className="siteMobileNav__subpanelEyebrow">{config.eyebrow}</p>
+          <h2 className="siteMobileNav__subpanelTitle">{config.title}</h2>
+          <p className="siteMobileNav__subpanelBody">{config.description}</p>
+        </div>
+      </div>
+      <div className="siteMobileNav__subpanelList">
+        {config.items.map((item) => (
           <HeaderLink
             activeClassName="siteMobileNav__link--active"
             className="siteMobileNav__link siteMobileNav__link--child"
@@ -78,7 +107,7 @@ function MobileDropdown({ label, items, onNavigate }) {
           />
         ))}
       </div>
-    </details>
+    </section>
   );
 }
 
@@ -86,6 +115,7 @@ export default function SiteHeader() {
   const location = useLocation();
   const headerRef = useRef(null);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [mobileSubmenu, setMobileSubmenu] = useState(null);
   const [desktopPanelState, setDesktopPanelState] = useState({
     key: null,
     open: false,
@@ -128,13 +158,64 @@ export default function SiteHeader() {
     ? desktopPanelConfigs[desktopPanelState.key]
     : null;
 
+  const mobilePanelConfigs = {
+    services: {
+      description: desktopPanelConfigs.services.description,
+      eyebrow: 'Services',
+      items: serviceNavItems,
+      title: 'What Criyx builds',
+    },
+    products: {
+      description: desktopPanelConfigs.products.description,
+      eyebrow: 'Our Products',
+      items: productNavItems,
+      title: 'Product lineup',
+    },
+  };
+
   useEffect(() => {
     setMobileMenuOpen(false);
+    setMobileSubmenu(null);
     setDesktopPanelState((current) => ({ ...current, open: false }));
-    document.querySelectorAll('.siteMobileDropdown[open]').forEach((element) => {
-      element.removeAttribute('open');
-    });
   }, [location.pathname]);
+
+  useEffect(() => {
+    if (!mobileMenuOpen) {
+      document.body.style.removeProperty('overflow');
+      return undefined;
+    }
+
+    document.body.style.overflow = 'hidden';
+
+    return () => {
+      document.body.style.removeProperty('overflow');
+    };
+  }, [mobileMenuOpen]);
+
+  useEffect(() => {
+    if (!mobileMenuOpen) {
+      return undefined;
+    }
+
+    const handleKeyDown = (event) => {
+      if (event.key !== 'Escape') {
+        return;
+      }
+
+      if (mobileSubmenu) {
+        setMobileSubmenu(null);
+        return;
+      }
+
+      setMobileMenuOpen(false);
+    };
+
+    window.addEventListener('keydown', handleKeyDown);
+
+    return () => {
+      window.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [mobileMenuOpen, mobileSubmenu]);
 
   const toggleDesktopPanel = (key) => {
     setDesktopPanelState((current) => {
@@ -155,63 +236,119 @@ export default function SiteHeader() {
         <span className="brand__name">Criyx</span>
       </Link>
 
-      <div className="siteHeader__navWrap">
-        <nav className="siteNav" aria-label="Primary">
-          <DesktopPanelTrigger
-            isActive={location.pathname.startsWith(desktopPanelConfigs.services.activePrefix)}
-            isOpen={desktopPanelState.key === 'services' && desktopPanelState.open}
-            label={desktopPanelConfigs.services.buttonLabel}
-            onToggle={() => toggleDesktopPanel('services')}
-            panelId={panelId}
-          />
-          <DesktopPanelTrigger
-            isActive={location.pathname.startsWith(desktopPanelConfigs.products.activePrefix)}
-            isOpen={desktopPanelState.key === 'products' && desktopPanelState.open}
-            label={desktopPanelConfigs.products.buttonLabel}
-            onToggle={() => toggleDesktopPanel('products')}
-            panelId={panelId}
-          />
-          {navItems.map((item) => (
-            <HeaderLink item={item} key={item.to} />
-          ))}
-        </nav>
-      </div>
+      <nav className="siteNav" aria-label="Primary">
+        <DesktopPanelTrigger
+          isActive={location.pathname.startsWith(desktopPanelConfigs.services.activePrefix)}
+          isOpen={desktopPanelState.key === 'services' && desktopPanelState.open}
+          label={desktopPanelConfigs.services.buttonLabel}
+          onToggle={() => toggleDesktopPanel('services')}
+          panelId={panelId}
+        />
+        <DesktopPanelTrigger
+          isActive={location.pathname.startsWith(desktopPanelConfigs.products.activePrefix)}
+          isOpen={desktopPanelState.key === 'products' && desktopPanelState.open}
+          label={desktopPanelConfigs.products.buttonLabel}
+          onToggle={() => toggleDesktopPanel('products')}
+          panelId={panelId}
+        />
+        {navItems.map((item) => (
+          <HeaderLink item={item} key={item.to} />
+        ))}
+      </nav>
 
       <button
         aria-controls="site-mobile-menu"
         aria-expanded={mobileMenuOpen}
-        className="siteHeader__mobileToggle"
-        onClick={() => setMobileMenuOpen((open) => !open)}
+        aria-label={mobileMenuOpen ? 'Close navigation menu' : 'Open navigation menu'}
+        className={`siteHeader__mobileToggle${mobileMenuOpen ? ' siteHeader__mobileToggle--open' : ''}`}
+        onClick={() => {
+          setMobileMenuOpen((open) => {
+            const nextOpen = !open;
+
+            if (!nextOpen) {
+              setMobileSubmenu(null);
+            }
+
+            return nextOpen;
+          });
+        }}
         type="button"
       >
-        {mobileMenuOpen ? 'Close' : 'Menu'}
+        <span className="siteHeader__mobileToggleBars" aria-hidden="true">
+          <span className="siteHeader__mobileToggleBar" />
+          <span className="siteHeader__mobileToggleBar" />
+          <span className="siteHeader__mobileToggleBar" />
+        </span>
       </button>
 
-      {mobileMenuOpen ? (
-        <div className="siteMobileNav" id="site-mobile-menu">
+      <div
+        aria-hidden={!mobileMenuOpen}
+        className={`siteMobileNav${mobileMenuOpen ? ' siteMobileNav--open' : ''}${
+          mobileSubmenu ? ' siteMobileNav--submenuOpen' : ''
+        }`}
+        id="site-mobile-menu"
+      >
+        <button
+          className="siteMobileNav__backdrop"
+          onClick={() => {
+            setMobileMenuOpen(false);
+            setMobileSubmenu(null);
+          }}
+          tabIndex={-1}
+          type="button"
+        />
+        <div className="siteMobileNav__frame">
           <div className="siteMobileNav__panel">
-            <MobileDropdown
-              items={serviceNavItems}
-              label="Services"
-              onNavigate={() => setMobileMenuOpen(false)}
-            />
-            <MobileDropdown
-              items={productNavItems}
-              label="Our Products"
-              onNavigate={() => setMobileMenuOpen(false)}
-            />
-            {navItems.map((item) => (
-              <HeaderLink
-                activeClassName="siteMobileNav__link--active"
-                className="siteMobileNav__link"
-                item={item}
-                key={item.to}
-                onClick={() => setMobileMenuOpen(false)}
+            <div className="siteMobileNav__panelHeader">
+              <p className="siteMobileNav__eyebrow">Navigation</p>
+              <p className="siteMobileNav__panelTitle">
+                Move through services, products, and the rest of the site.
+              </p>
+            </div>
+
+            <div className="siteMobileNav__primaryList">
+              <MobileMenuTrigger
+                isActive={location.pathname.startsWith('/services')}
+                label="Services"
+                onClick={() => setMobileSubmenu('services')}
               />
-            ))}
+              <MobileMenuTrigger
+                isActive={location.pathname.startsWith('/products')}
+                label="Our Products"
+                onClick={() => setMobileSubmenu('products')}
+              />
+            </div>
+
+            <div className="siteMobileNav__primaryList">
+              {navItems.map((item) => (
+                <HeaderLink
+                  activeClassName="siteMobileNav__link--active"
+                  className="siteMobileNav__link"
+                  item={item}
+                  key={item.to}
+                  onClick={() => {
+                    setMobileMenuOpen(false);
+                    setMobileSubmenu(null);
+                  }}
+                />
+              ))}
+            </div>
           </div>
+
+          {Object.entries(mobilePanelConfigs).map(([key, config]) => (
+            <MobileSubmenuPanel
+              config={config}
+              isOpen={mobileSubmenu === key}
+              key={key}
+              onBack={() => setMobileSubmenu(null)}
+              onNavigate={() => {
+                setMobileMenuOpen(false);
+                setMobileSubmenu(null);
+              }}
+            />
+          ))}
         </div>
-      ) : null}
+      </div>
 
       {activeDesktopPanel ? (
         <StaggeredMenu

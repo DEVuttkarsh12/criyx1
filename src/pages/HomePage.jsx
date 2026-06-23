@@ -1,6 +1,6 @@
 import { useEffect, useId, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
-import founderPortrait from '../assets/founder-dikshant-portrait.png';
+import founderPortrait from '../assets/founder-dikshant-portrait.jpeg';
 import LogoLoop from '../components/LogoLoop';
 import StaggeredMenu from '../components/StaggeredMenu';
 import TechnologyIcon from '../components/TechnologyIcon';

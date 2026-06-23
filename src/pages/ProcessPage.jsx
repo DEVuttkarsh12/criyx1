@@ -12,29 +12,57 @@ export default function ProcessPage() {
       return undefined;
     }
 
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (!entry.isIntersecting) {
-            return;
-          }
+    let animationFrame = 0;
 
-          const nextStep = Number(entry.target.getAttribute('data-step-index'));
-          if (!Number.isNaN(nextStep)) {
-            setActiveStep(nextStep);
-          }
-        });
-      },
-      {
-        rootMargin: '-40% 0px -40% 0px',
-        threshold: 0,
-      },
-    );
+    const updateActiveStep = () => {
+      animationFrame = 0;
 
-    stages.forEach((stage) => observer.observe(stage));
+      const viewportAnchor = window.innerHeight * 0.45;
+      let closestStep = 0;
+      let closestDistance = Number.POSITIVE_INFINITY;
+
+      stages.forEach((stage) => {
+        const stepIndex = Number(stage.getAttribute('data-step-index'));
+
+        if (Number.isNaN(stepIndex)) {
+          return;
+        }
+
+        const rect = stage.getBoundingClientRect();
+        const stageAnchor = rect.top + rect.height / 2;
+        const distance = Math.abs(stageAnchor - viewportAnchor);
+
+        if (distance < closestDistance) {
+          closestDistance = distance;
+          closestStep = stepIndex;
+        }
+      });
+
+      setActiveStep((currentStep) =>
+        currentStep === closestStep ? currentStep : closestStep,
+      );
+    };
+
+    const queueUpdate = () => {
+      if (animationFrame) {
+        return;
+      }
+
+      animationFrame = window.requestAnimationFrame(updateActiveStep);
+    };
+
+    updateActiveStep();
+
+    window.addEventListener('scroll', queueUpdate, { passive: true });
+    window.addEventListener('resize', queueUpdate);
 
     return () => {
-      observer.disconnect();
+      window.removeEventListener('scroll', queueUpdate);
+      window.removeEventListener('resize', queueUpdate);
+
+      if (animationFrame) {
+        window.cancelAnimationFrame(animationFrame);
+      }
     };
   }, []);
 
@@ -65,7 +93,7 @@ export default function ProcessPage() {
       </section>
 
       <section className="pageSection processExperience">
-        <div className="processRail reveal">
+        <div className="processRail">
           <div className="processRail__panel">
             <p className="processRail__eyebrow">Connected flow</p>
             <h2 className="processRail__title">
@@ -104,7 +132,7 @@ export default function ProcessPage() {
         <div className="processStory">
           {processJourney.map((item, index) => (
             <article
-              className={`processStage reveal reveal--delay-${(index % 4) + 1}${
+              className={`processStage${
                 index === activeStep ? ' processStage--active' : ''
               }`}
               data-step-index={index}
