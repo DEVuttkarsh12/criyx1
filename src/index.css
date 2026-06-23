@@ -2584,9 +2584,44 @@ a {
   padding: 32px;
 }
 
+.ctaPanel--calendar {
+  grid-template-columns: minmax(280px, 0.95fr) minmax(0, 1.35fr);
+  align-items: start;
+}
+
 .ctaPanel__copy {
   display: grid;
   gap: var(--space-2);
+}
+
+.calEmbed {
+  width: 100%;
+  min-height: 780px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 24px;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.028) 0%, rgba(255, 255, 255, 0.01) 100%),
+    rgba(8, 6, 5, 0.82);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.03),
+    0 18px 40px -32px rgba(0, 0, 0, 0.9);
+}
+
+.calEmbed iframe {
+  display: block;
+  width: 100%;
+  min-height: 780px;
+  border: 0;
+}
+
+.calEmbed__fallback {
+  display: grid;
+  place-items: center;
+  min-height: 780px;
+  margin: 0;
+  color: var(--color-text-tertiary);
+  font-size: var(--font-size-md);
 }
 
 .reveal {
@@ -3012,6 +3047,12 @@ a {
     padding: 24px;
   }
 
+  .calEmbed,
+  .calEmbed iframe,
+  .calEmbed__fallback {
+    min-height: 700px;
+  }
+
   .visualCarousel {
     grid-auto-columns: minmax(260px, 82vw);
   }
@@ -3043,6 +3084,12 @@ a {
   .ctaPanel__actions,
   .hero__actions {
     width: 100%;
+  }
+
+  .calEmbed,
+  .calEmbed iframe,
+  .calEmbed__fallback {
+    min-height: 640px;
   }
 
   .statCard,

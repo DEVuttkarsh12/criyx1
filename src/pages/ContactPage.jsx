@@ -1,7 +1,84 @@
-import { Link } from 'react-router-dom';
+import { useEffect } from 'react';
 import { contactOptions, contactSteps } from '../data/siteContent';
 
+const CAL_SCRIPT_SRC = 'https://app.cal.com/embed/embed.js';
+const CAL_NAMESPACE = '30min';
+const CAL_ORIGIN = 'https://app.cal.com';
+const CAL_LINK = 'criyx.ai/30min';
+const CAL_CONTAINER_ID = 'my-cal-inline-30min';
+
 export default function ContactPage() {
+  useEffect(() => {
+    const container = document.getElementById(CAL_CONTAINER_ID);
+
+    if (!container) {
+      return undefined;
+    }
+
+    let isCancelled = false;
+    let scriptNode = null;
+    let existingScript = null;
+
+    const initializeCal = () => {
+      if (isCancelled || !window.Cal) {
+        return;
+      }
+
+      container.innerHTML = '';
+
+      window.Cal('init', CAL_NAMESPACE, { origin: CAL_ORIGIN });
+      window.Cal.config = window.Cal.config || {};
+      window.Cal.config.forwardQueryParams = true;
+
+      window.Cal.ns[CAL_NAMESPACE]('inline', {
+        elementOrSelector: `#${CAL_CONTAINER_ID}`,
+        config: {
+          layout: 'month_view',
+          useSlotsViewOnSmallScreen: true,
+          theme: 'auto',
+        },
+        calLink: CAL_LINK,
+      });
+
+      window.Cal.ns[CAL_NAMESPACE]('ui', {
+        cssVarsPerTheme: {
+          light: { 'cal-brand': '#ffffff' },
+          dark: { 'cal-brand': '#000000' },
+        },
+        hideEventTypeDetails: false,
+        layout: 'month_view',
+      });
+    };
+
+    if (window.Cal?.loaded) {
+      initializeCal();
+    } else {
+      existingScript = document.querySelector(`script[src="${CAL_SCRIPT_SRC}"]`);
+
+      if (existingScript) {
+        existingScript.addEventListener('load', initializeCal);
+      } else {
+        scriptNode = document.createElement('script');
+        scriptNode.src = CAL_SCRIPT_SRC;
+        scriptNode.async = true;
+        scriptNode.addEventListener('load', initializeCal);
+        document.head.appendChild(scriptNode);
+      }
+    }
+
+    return () => {
+      isCancelled = true;
+
+      if (scriptNode) {
+        scriptNode.removeEventListener('load', initializeCal);
+      }
+
+      if (existingScript) {
+        existingScript.removeEventListener('load', initializeCal);
+      }
+    };
+  }, []);
+
   return (
     <section className="page" aria-labelledby="contact-title">
       <section className="pageIntro reveal">
@@ -63,24 +140,22 @@ export default function ContactPage() {
       </section>
 
       <section className="pageSection">
-        <div className="ctaPanel reveal">
+        <div className="ctaPanel ctaPanel--calendar reveal">
           <div className="ctaPanel__copy">
             <p className="sectionHeading__eyebrow">Reach out</p>
             <h2 className="sectionHeading__title">
-              Send the workflow summary or business problem to start the
-              conversation.
+              Book time directly in the calendar and bring the workflow summary
+              or business problem to the call.
             </h2>
             <p className="sectionHeading__body">
-              Email works well when you want to share context before a call.
+              Pick a slot below. If you prefer to share context before the
+              meeting, send it to hello@criyx.com.
             </p>
           </div>
-          <div className="ctaPanel__actions">
-            <a className="button button--primary" href="mailto:hello@criyx.com">
-              hello@criyx.com
-            </a>
-            <Link className="button button--secondary" to="/why-us">
-              Read why Criyx
-            </Link>
+          <div className="calEmbed" id={CAL_CONTAINER_ID}>
+            <p className="calEmbed__fallback">
+              Loading calendar...
+            </p>
           </div>
         </div>
       </section>
