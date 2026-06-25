@@ -1061,24 +1061,20 @@ a {
 }
 
 .hero__titleBrand {
-  font-family: "Bruno Ace SC", var(--font-family-hero);
-  font-feature-settings: "ss01" 1;
-  font-optical-sizing: auto;
-  font-size: clamp(42px, 5vw, 62px);
-  font-weight: 400;
-  line-height: 0.94;
-  letter-spacing: -0.055em;
+  font-family: var(--font-family-primary);
+  font-size: clamp(44px, 5.2vw, 64px);
+  font-weight: 600;
+  line-height: 0.95;
+  letter-spacing: -0.06em;
   color: rgba(244, 239, 233, 0.88);
 }
 
 .hero__titleLine {
-  font-family: "Bruno Ace SC", var(--font-family-hero);
-  font-feature-settings: "ss01" 1;
-  font-optical-sizing: auto;
-  font-size: clamp(34px, 5.8vw, 70px);
-  font-weight: 500;
-  line-height: 0.94;
-  letter-spacing: -0.055em;
+  font-family: var(--font-family-primary);
+  font-size: clamp(36px, 6vw, 76px);
+  font-weight: 600;
+  line-height: 0.95;
+  letter-spacing: -0.062em;
   text-transform: none;
 }
 
@@ -1172,6 +1168,32 @@ a {
   min-width: 0;
   padding: 10px 0;
   overflow: hidden;
+  -webkit-mask-image: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(0, 0, 0, 0.03) 6%,
+    rgba(0, 0, 0, 0.14) 12%,
+    rgba(0, 0, 0, 0.4) 19%,
+    #000 27%,
+    #000 73%,
+    rgba(0, 0, 0, 0.4) 81%,
+    rgba(0, 0, 0, 0.14) 88%,
+    rgba(0, 0, 0, 0.03) 94%,
+    transparent 100%
+  );
+  mask-image: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(0, 0, 0, 0.03) 6%,
+    rgba(0, 0, 0, 0.14) 12%,
+    rgba(0, 0, 0, 0.4) 19%,
+    #000 27%,
+    #000 73%,
+    rgba(0, 0, 0, 0.4) 81%,
+    rgba(0, 0, 0, 0.14) 88%,
+    rgba(0, 0, 0, 0.03) 94%,
+    transparent 100%
+  );
 }
 
 .hero__logoLoop {
@@ -2594,10 +2616,23 @@ a {
   gap: var(--space-2);
 }
 
+.calEmbedPanel {
+  padding: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 28px;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.026) 0%, rgba(255, 255, 255, 0.008) 100%),
+    rgba(16, 12, 10, 0.72);
+  box-shadow:
+    0 24px 50px -40px rgba(0, 0, 0, 0.82),
+    inset 0 1px 0 rgba(255, 255, 255, 0.025);
+  backdrop-filter: blur(18px);
+}
+
 .calEmbed {
   width: 100%;
-  min-height: 780px;
-  overflow: hidden;
+  height: 920px;
+  overflow: auto;
   border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 24px;
   background:
@@ -2611,14 +2646,14 @@ a {
 .calEmbed iframe {
   display: block;
   width: 100%;
-  min-height: 780px;
+  min-height: 100%;
   border: 0;
 }
 
 .calEmbed__fallback {
   display: grid;
   place-items: center;
-  min-height: 780px;
+  min-height: 100%;
   margin: 0;
   color: var(--color-text-tertiary);
   font-size: var(--font-size-md);
@@ -3047,10 +3082,14 @@ a {
     padding: 24px;
   }
 
+  .calEmbedPanel {
+    padding: 16px;
+  }
+
   .calEmbed,
   .calEmbed iframe,
   .calEmbed__fallback {
-    min-height: 700px;
+    height: 780px;
   }
 
   .visualCarousel {
@@ -3086,10 +3125,15 @@ a {
     width: 100%;
   }
 
+  .calEmbedPanel {
+    padding: 12px;
+    border-radius: 22px;
+  }
+
   .calEmbed,
   .calEmbed iframe,
   .calEmbed__fallback {
-    min-height: 640px;
+    height: 680px;
   }
 
   .statCard,
