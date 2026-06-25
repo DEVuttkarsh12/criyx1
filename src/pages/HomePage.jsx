@@ -246,6 +246,72 @@ export default function HomePage() {
         </div>
       </section>
 
+      <section className="explorePages" aria-labelledby="explore-pages-title">
+        <div className="explorePages__content">
+          <div className="explorePages__intro">
+            <p className="explorePages__eyebrow reveal">Explore Pages</p>
+            <h2
+              className="explorePages__title reveal reveal--delay-1"
+              id="explore-pages-title"
+            >
+              Move through the site without losing the thread.
+            </h2>
+            <p className="explorePages__body reveal reveal--delay-2">
+              Each page is built to answer a specific part of the decision:
+              what Criyx does, how the work is delivered, why the approach
+              holds, and where to start if the workflow problem is already
+              clear.
+            </p>
+          </div>
+
+          <div className="explorePages__list" role="list">
+            {explorePages.map((page) => (
+              page.panelKey ? (
+                <button
+                  aria-controls={panelId}
+                  aria-expanded={activeExplorePanel === page.panelKey}
+                  aria-haspopup="dialog"
+                  className={`explorePages__item explorePages__item--button cursor-target reveal reveal--delay-${(Number(page.meta) - 1) % 4 + 1}`}
+                  key={page.label}
+                  onClick={() =>
+                    setActiveExplorePanel((current) =>
+                      current === page.panelKey ? null : page.panelKey,
+                    )
+                  }
+                  role="listitem"
+                  type="button"
+                >
+                  <span className="explorePages__itemMeta">{page.meta}</span>
+                  <div className="explorePages__itemMain">
+                    <h3 className="explorePages__itemTitle">{page.label}</h3>
+                    <p className="explorePages__itemBody">{page.description}</p>
+                  </div>
+                  <span className="explorePages__itemArrow" aria-hidden="true">
+                    {explorePanelConfigs[page.panelKey].buttonText}
+                  </span>
+                </button>
+              ) : (
+                <Link
+                  className={`explorePages__item cursor-target reveal reveal--delay-${(Number(page.meta) - 1) % 4 + 1}`}
+                  key={page.to}
+                  role="listitem"
+                  to={page.to}
+                >
+                  <span className="explorePages__itemMeta">{page.meta}</span>
+                  <div className="explorePages__itemMain">
+                    <h3 className="explorePages__itemTitle">{page.label}</h3>
+                    <p className="explorePages__itemBody">{page.description}</p>
+                  </div>
+                  <span className="explorePages__itemArrow" aria-hidden="true">
+                    Open page
+                  </span>
+                </Link>
+              )
+            ))}
+          </div>
+        </div>
+      </section>
+
       <section
         className="founderFeature"
         aria-labelledby="founder-feature-title"
@@ -320,72 +386,6 @@ export default function HomePage() {
                 </span>
               </div>
             </figure>
-          </div>
-        </div>
-      </section>
-
-      <section className="explorePages" aria-labelledby="explore-pages-title">
-        <div className="explorePages__content">
-          <div className="explorePages__intro">
-            <p className="explorePages__eyebrow reveal">Explore Pages</p>
-            <h2
-              className="explorePages__title reveal reveal--delay-1"
-              id="explore-pages-title"
-            >
-              Move through the site without losing the thread.
-            </h2>
-            <p className="explorePages__body reveal reveal--delay-2">
-              Each page is built to answer a specific part of the decision:
-              what Criyx does, how the work is delivered, why the approach
-              holds, and where to start if the workflow problem is already
-              clear.
-            </p>
-          </div>
-
-          <div className="explorePages__list" role="list">
-            {explorePages.map((page) => (
-              page.panelKey ? (
-                <button
-                  aria-controls={panelId}
-                  aria-expanded={activeExplorePanel === page.panelKey}
-                  aria-haspopup="dialog"
-                  className={`explorePages__item explorePages__item--button cursor-target reveal reveal--delay-${(Number(page.meta) - 1) % 4 + 1}`}
-                  key={page.label}
-                  onClick={() =>
-                    setActiveExplorePanel((current) =>
-                      current === page.panelKey ? null : page.panelKey,
-                    )
-                  }
-                  role="listitem"
-                  type="button"
-                >
-                  <span className="explorePages__itemMeta">{page.meta}</span>
-                  <div className="explorePages__itemMain">
-                    <h3 className="explorePages__itemTitle">{page.label}</h3>
-                    <p className="explorePages__itemBody">{page.description}</p>
-                  </div>
-                  <span className="explorePages__itemArrow" aria-hidden="true">
-                    {explorePanelConfigs[page.panelKey].buttonText}
-                  </span>
-                </button>
-              ) : (
-                <Link
-                  className={`explorePages__item cursor-target reveal reveal--delay-${(Number(page.meta) - 1) % 4 + 1}`}
-                  key={page.to}
-                  role="listitem"
-                  to={page.to}
-                >
-                  <span className="explorePages__itemMeta">{page.meta}</span>
-                  <div className="explorePages__itemMain">
-                    <h3 className="explorePages__itemTitle">{page.label}</h3>
-                    <p className="explorePages__itemBody">{page.description}</p>
-                  </div>
-                  <span className="explorePages__itemArrow" aria-hidden="true">
-                    Open page
-                  </span>
-                </Link>
-              )
-            ))}
           </div>
         </div>
       </section>
