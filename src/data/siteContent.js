@@ -365,13 +365,13 @@ export const productPages = [
       'Criyx builds content systems around your actual source material, publishing flow, and quality standard so the outputs are useful from day one.',
   },
   {
-    slug: 'exhibition-whatsapp',
-    label: 'Exhibition WhatsApp',
+    slug: 'exhibition-lead-capture',
+    label: 'Exhibition Lead Capture',
     eyebrow: 'Our Products',
     title:
-      'WhatsApp systems for exhibitions, trade shows, and booth follow-up so every conversation becomes a trackable next step.',
+      'Exhibition lead capture systems that turn booth traffic into tagged, trackable follow-up without losing context after the event.',
     intro:
-      'Teams often lose value after events because lead details are incomplete, follow-up is slow, and the context of the conversation disappears. Criyx designs WhatsApp-based exhibition workflows that capture interest at the booth, qualify the lead, send the right information, and route the contact into the correct follow-up process immediately.',
+      'Teams often lose value after exhibitions because lead details are incomplete, follow-up is delayed, and the context of the booth conversation disappears. Criyx builds exhibition lead capture systems that collect visitor details quickly, qualify interest while the interaction is still fresh, send the right material, and route the lead into the correct sales or follow-up workflow immediately. WhatsApp can be part of that system, but the product is built around lead capture and conversion, not only the messaging channel.',
     stats: [
       {
         value: 'Instant',
@@ -390,12 +390,12 @@ export const productPages = [
       {
         title: 'Fast event lead capture',
         body:
-          'The workflow makes it easy for booth visitors to enter the system without long forms, manual typing, or post-event cleanup headaches.',
+          'The workflow makes it easy for booth visitors to enter the system without long forms, manual typing, or messy post-event cleanup.',
       },
       {
         title: 'Useful qualification and follow-up',
         body:
-          'Criyx adds logic for product interest, timeline, buyer intent, geography, and next-step routing so the WhatsApp interaction is commercially meaningful.',
+          'Criyx adds logic for product interest, timeline, buyer intent, geography, and next-step routing so the captured lead is commercially meaningful and ready for action.',
       },
       {
         title: 'Sales-ready visibility',
@@ -408,7 +408,7 @@ export const productPages = [
         step: '01',
         title: 'Capture and confirm the contact',
         body:
-          'The visitor enters through a QR, prompt, short link, or staff-assisted flow and receives an immediate WhatsApp interaction that confirms the connection.',
+          'The visitor enters through a QR, short link, form, kiosk flow, or staff-assisted interaction and receives an immediate confirmation that the lead has been captured.',
       },
       {
         step: '02',
@@ -420,22 +420,22 @@ export const productPages = [
         step: '03',
         title: 'Send content and assign ownership',
         body:
-          'Relevant material can be sent instantly while the lead record is updated, the right sales owner is alerted, and follow-up tasks are created.',
+          'Relevant material can be sent instantly while the lead record is updated, the right sales owner is alerted, and the next follow-up task is created.',
       },
     ],
     useCases: [
       {
-        title: 'Trade show booth capture',
+        title: 'Booth lead capture at exhibitions',
         body:
           'Convert walk-up traffic into a tagged and trackable lead flow without depending on paper cards or manual CRM entry after the event.',
       },
       {
-        title: 'Product-specific event routing',
+        title: 'Product-specific lead qualification',
         body:
           'Direct visitors toward the relevant offer, team, or product line based on what they actually asked about at the booth.',
       },
       {
-        title: 'Post-event nurture and follow-up',
+        title: 'Immediate and post-event follow-up',
         body:
           'Continue the conversation with the right documents, reminders, next steps, and internal owner visibility so the lead does not go cold.',
       },
@@ -444,7 +444,7 @@ export const productPages = [
       {
         title: 'Entry layer',
         points: [
-          'QR, short link, or assisted booth capture flows.',
+          'QR, short link, kiosk, or assisted booth capture flows.',
           'Opt-in confirmation and contact validation.',
           'Event-specific entry logic for region, booth, or product line.',
         ],
@@ -468,9 +468,9 @@ export const productPages = [
     ],
     faqs: [
       {
-        question: 'Why use WhatsApp for exhibition follow-up?',
+        question: 'Why build a dedicated exhibition lead capture system?',
         answer:
-          'Because it reduces the gap between the live event conversation and the first next step. Visitors respond faster, teams capture more context while it is still fresh, and sales gets a more usable handoff than a post-event spreadsheet cleanup.',
+          'Because it reduces the gap between the live event conversation and the first next step. Teams capture better context while it is still fresh, sales gets a cleaner handoff, and follow-up starts before the lead goes cold. WhatsApp can be one part of that system, but the main value is the overall capture and routing flow.',
       },
       {
         question: 'Can the system route leads to different teams or products?',
@@ -479,9 +479,9 @@ export const productPages = [
       },
     ],
     ctaTitle:
-      'Event traffic only matters if the follow-up system is fast, organized, and visible to sales.',
+      'Exhibition traffic only matters if lead capture and follow-up are fast, organized, and visible to sales.',
     ctaBody:
-      'Criyx can turn WhatsApp into that system so leads move from booth interaction to trackable pipeline with much less manual cleanup.',
+      'Criyx builds the lead capture system that moves visitors from booth interaction to tagged, trackable pipeline with far less manual cleanup.',
   },
   {
     slug: 'workflow-automation',
@@ -1697,6 +1697,258 @@ export const servicePages = [
       'If your workflow needs a real interface for people to review, approve, and manage AI-driven work, custom software is usually part of the right solution.',
     ctaBody:
       'Criyx builds that software layer so the automation and agent system stays usable in day-to-day operations.',
+  },
+  {
+    slug: 'full-stack-marketing',
+    label: 'Full-Stack Marketing',
+    eyebrow: 'Services',
+    overviewBody:
+      'Full-stack marketing support across positioning, campaigns, content, landing pages, outbound systems, and reporting.',
+    bullets: [
+      'Campaign strategy, messaging, content systems, and execution support.',
+      'Landing pages, outbound assets, funnels, and launch coordination.',
+      'Marketing operations that connect planning, creation, distribution, and iteration.',
+    ],
+    title:
+      'Full-stack marketing systems built to help teams plan, create, launch, and improve growth work without fragmentation.',
+    intro:
+      'Criyx supports marketing teams that need more than isolated content output. We help shape positioning, campaigns, landing pages, outbound systems, launch workflows, and reporting structures so the marketing motion is not only creative, but operationally strong. The work is designed to connect strategy, assets, execution, and iteration inside one cleaner system.',
+    stats: [
+      {
+        value: 'End-to-end',
+        label: 'Support across messaging, campaigns, landing pages, content operations, and launch execution.',
+      },
+      {
+        value: 'Conversion-aware',
+        label: 'Built around audience clarity, offer framing, response quality, and measurable next steps.',
+      },
+      {
+        value: 'Ops-backed',
+        label: 'Marketing systems structured so planning, approvals, publishing, and follow-through do not break apart.',
+      },
+    ],
+    pillars: [
+      {
+        title: 'Positioning that carries through execution',
+        body:
+          'Good marketing starts with the offer, audience, and message. Criyx helps define that clearly enough that the rest of the campaign work can stay aligned.',
+      },
+      {
+        title: 'Execution across the full funnel',
+        body:
+          'The service can cover campaign assets, landing pages, outbound support, content workflows, and launch coordination so growth work does not stall between teams.',
+      },
+      {
+        title: 'A system, not just assets',
+        body:
+          'Strong marketing work needs repeatable structure around approvals, publishing, reporting, and optimization. That is where the service becomes more valuable than one-off deliverables.',
+      },
+    ],
+    journey: [
+      {
+        step: '01',
+        title: 'Clarify the offer and growth motion',
+        body:
+          'We identify the audience, the commercial objective, the offer framing, and the channels that should carry the work.',
+      },
+      {
+        step: '02',
+        title: 'Build the campaign and asset system',
+        body:
+          'Criyx develops the assets, landing surfaces, messaging directions, outbound support, and operational structure needed to launch cleanly.',
+      },
+      {
+        step: '03',
+        title: 'Launch, measure, and refine',
+        body:
+          'Once live, the work is tracked, adjusted, and improved so the marketing system becomes sharper instead of restarting from zero every cycle.',
+      },
+    ],
+    useCases: [
+      {
+        title: 'Campaign and launch execution',
+        body:
+          'Move from idea to launch with stronger coordination across messaging, assets, timelines, and channel-specific execution.',
+      },
+      {
+        title: 'Landing page and funnel support',
+        body:
+          'Build clearer conversion paths with better copy, sharper page structure, and tighter alignment between campaign intent and landing experience.',
+      },
+      {
+        title: 'Content and outbound operations',
+        body:
+          'Support recurring content, sales collateral, outbound sequences, and internal launch workflows without making the team manage every detail manually.',
+      },
+    ],
+    modules: [
+      {
+        title: 'Strategy layer',
+        points: [
+          'Audience, offer, and positioning clarity for campaigns and launches.',
+          'Messaging direction that can be reused across channels.',
+          'Channel and funnel decisions tied to real business goals.',
+        ],
+      },
+      {
+        title: 'Execution layer',
+        points: [
+          'Landing pages, campaign assets, outbound support, and content deliverables.',
+          'Workflow support for briefs, approvals, handoffs, and publishing.',
+          'Structured systems that reduce chaos across multi-channel marketing work.',
+        ],
+      },
+      {
+        title: 'Optimization layer',
+        points: [
+          'Performance readouts, iteration notes, and reporting support.',
+          'Refinement of pages, messaging, and sequence logic after launch.',
+          'A feedback loop that improves execution instead of relying on guesswork.',
+        ],
+      },
+    ],
+    faqs: [
+      {
+        question: 'What does full-stack marketing mean in practice?',
+        answer:
+          'It means the work is not limited to one channel or one asset type. Criyx can support the strategy, pages, content, outbound, launch workflow, and reporting structure needed to make the marketing system hold together.',
+      },
+      {
+        question: 'Is this for teams that already have internal marketers?',
+        answer:
+          'Yes. Sometimes the value is acting as an execution and systems partner for an internal team that needs sharper campaign infrastructure, clearer landing surfaces, or more reliable launch support.',
+      },
+    ],
+    ctaTitle:
+      'If your marketing work is fragmented between strategy, assets, pages, and execution, the fix is usually a stronger system rather than more isolated output.',
+    ctaBody:
+      'Criyx helps build that full-stack marketing system so your team can launch and iterate with more clarity.',
+  },
+  {
+    slug: 'web-design-development',
+    label: 'Web Design and Development',
+    eyebrow: 'Services',
+    overviewBody:
+      'Stunning websites and landing pages designed to look sharp, communicate clearly, and convert without feeling generic.',
+    bullets: [
+      'Marketing sites, landing pages, and product-facing web experiences.',
+      'Strong visual direction paired with clear information hierarchy and performance.',
+      'Design and development that support brand perception and conversion at the same time.',
+    ],
+    title:
+      'Web design and development for teams that need stunning websites with strong messaging, clean structure, and credible execution.',
+    intro:
+      'Criyx designs and builds websites that need to do more than exist online. They need to present the brand sharply, explain the offer clearly, and move the visitor toward the right next step. That means visual quality matters, but so do structure, copy, responsiveness, performance, and the overall feel of the experience.',
+    stats: [
+      {
+        value: 'Striking',
+        label: 'Built to feel intentional, polished, and distinct instead of template-driven.',
+      },
+      {
+        value: 'Clear',
+        label: 'Site structure and copy are shaped so visitors understand the offer quickly.',
+      },
+      {
+        value: 'Conversion-ready',
+        label: 'Design and development decisions support trust, response, and the action the page is meant to drive.',
+      },
+    ],
+    pillars: [
+      {
+        title: 'Visual quality with purpose',
+        body:
+          'A strong website should look impressive, but the design still needs to serve the message, the brand, and the user journey instead of chasing visual noise.',
+      },
+      {
+        title: 'Messaging-led page structure',
+        body:
+          'Criyx shapes site sections, hierarchy, and flow around what the visitor needs to understand, believe, and do next.',
+      },
+      {
+        title: 'Build quality that holds up',
+        body:
+          'The frontend should be responsive, performant, and cleanly implemented so the site feels credible when real traffic and real users hit it.',
+      },
+    ],
+    journey: [
+      {
+        step: '01',
+        title: 'Define the site objective and visual direction',
+        body:
+          'We clarify what the site needs to communicate, who it is for, and how the visual language should support the brand.',
+      },
+      {
+        step: '02',
+        title: 'Design and build the web experience',
+        body:
+          'Criyx develops the layouts, copy structure, interaction patterns, and frontend implementation needed for a strong live experience.',
+      },
+      {
+        step: '03',
+        title: 'Refine for launch quality',
+        body:
+          'The site is reviewed for responsiveness, clarity, presentation, and next-step flow so it feels ready when people actually land on it.',
+      },
+    ],
+    useCases: [
+      {
+        title: 'Brand and company websites',
+        body:
+          'Present the business with more clarity and confidence through a site that reflects the quality of the actual work.',
+      },
+      {
+        title: 'Landing pages for offers and campaigns',
+        body:
+          'Build focused pages that support launches, lead generation, sales outreach, or product-specific conversion goals.',
+      },
+      {
+        title: 'Product and service explanation pages',
+        body:
+          'Create web experiences that make technical or AI-enabled offerings easier for buyers to understand and trust.',
+      },
+    ],
+    modules: [
+      {
+        title: 'Design layer',
+        points: [
+          'Visual direction, layout systems, typography, and section rhythm.',
+          'Page hierarchy built around message clarity and conversion intent.',
+          'Brand-sensitive design choices that avoid generic website patterns.',
+        ],
+      },
+      {
+        title: 'Development layer',
+        points: [
+          'Responsive frontend implementation across desktop and mobile.',
+          'Performance-aware build quality and clean interaction behavior.',
+          'Reusable structure that makes the site easier to extend later.',
+        ],
+      },
+      {
+        title: 'Launch layer',
+        points: [
+          'Review of copy flow, CTA placement, and page readiness.',
+          'Final refinement for presentation quality and user confidence.',
+          'A website that feels strong both visually and operationally after go-live.',
+        ],
+      },
+    ],
+    faqs: [
+      {
+        question: 'Do you only build brochure sites?',
+        answer:
+          'No. Criyx can build marketing sites, landing pages, product pages, and other web experiences where design quality, clarity, and conversion all matter together.',
+      },
+      {
+        question: 'What makes the website service different from standard web development?',
+        answer:
+          'The focus is not only on code. It is on the combined outcome: strong presentation, clear messaging, structured user flow, and a live site that feels credible enough to represent the business properly.',
+      },
+    ],
+    ctaTitle:
+      'If the website is supposed to make the business look sharper, explain the offer better, and convert more cleanly, the work needs more than basic implementation.',
+    ctaBody:
+      'Criyx designs and builds websites that aim for that higher standard in both presentation and execution.',
   },
 ];
 

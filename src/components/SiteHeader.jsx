@@ -25,16 +25,18 @@ function HeaderLink({
 
 const panelDescriptions = {
   Services: {
-    'Workflow Automation': 'Systemized automations for ops-heavy handoffs.',
-    'AI Voice Agent': 'Structured voice intake, support, and routing.',
-    'Marketing Agent': 'Campaign operations with review-ready outputs.',
-    'Custom Apps': 'Operator-facing tools around your AI workflows.',
+    'AI Automation': 'Systemized automations for ops-heavy handoffs.',
+    'AI Agents': 'Task agents with guardrails, tools, and workflow context.',
+    'Voice and Media Agents': 'Structured voice intake, support, and routing.',
+    'Custom Software and Apps': 'Operator-facing tools around your AI workflows.',
+    'Full-Stack Marketing': 'Campaign systems, landing pages, and growth execution.',
+    'Web Design and Development': 'Stunning websites built for clarity and conversion.',
   },
   'Our Products': {
     'AI Voice Agent': 'Voice-first qualification, intake, and support.',
     'Marketing Agent': 'An execution layer for campaign teams.',
     'Content Generator': 'Structured content production without chaos.',
-    'Exhibition WhatsApp': 'Event lead capture with immediate follow-up.',
+    'Exhibition Lead Capture': 'Event lead capture with immediate follow-up.',
     'Workflow Automation': 'Multi-step process control across your stack.',
     'Custom Apps': 'Internal products for review, action, and oversight.',
   },
