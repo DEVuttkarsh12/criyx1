@@ -15,22 +15,20 @@ export default function ContactPage() {
       return undefined;
     }
 
-    let isCancelled = false;
-    let scriptNode = null;
-    let existingScript = null;
+    const bootstrapCal = () => {
+      const cal = window.Cal;
 
-    const initializeCal = () => {
-      if (isCancelled || !window.Cal) {
+      if (!cal) {
         return;
       }
 
       container.innerHTML = '';
 
-      window.Cal('init', CAL_NAMESPACE, { origin: CAL_ORIGIN });
-      window.Cal.config = window.Cal.config || {};
-      window.Cal.config.forwardQueryParams = true;
+      cal('init', CAL_NAMESPACE, { origin: CAL_ORIGIN });
+      cal.config = cal.config || {};
+      cal.config.forwardQueryParams = true;
 
-      window.Cal.ns[CAL_NAMESPACE]('inline', {
+      cal.ns[CAL_NAMESPACE]('inline', {
         elementOrSelector: `#${CAL_CONTAINER_ID}`,
         config: {
           layout: 'month_view',
@@ -40,7 +38,7 @@ export default function ContactPage() {
         calLink: CAL_LINK,
       });
 
-      window.Cal.ns[CAL_NAMESPACE]('ui', {
+      cal.ns[CAL_NAMESPACE]('ui', {
         cssVarsPerTheme: {
           light: { 'cal-brand': '#ffffff' },
           dark: { 'cal-brand': '#000000' },
@@ -50,32 +48,55 @@ export default function ContactPage() {
       });
     };
 
-    if (window.Cal?.loaded) {
-      initializeCal();
-    } else {
-      existingScript = document.querySelector(`script[src="${CAL_SCRIPT_SRC}"]`);
+    const queueCalBootstrap = () => {
+      const queue = function pushToQueue(target, args) {
+        target.q.push(args);
+      };
+      const existingCal = window.Cal;
 
-      if (existingScript) {
-        existingScript.addEventListener('load', initializeCal);
-      } else {
-        scriptNode = document.createElement('script');
-        scriptNode.src = CAL_SCRIPT_SRC;
-        scriptNode.async = true;
-        scriptNode.addEventListener('load', initializeCal);
-        document.head.appendChild(scriptNode);
-      }
-    }
+      window.Cal =
+        existingCal ||
+        function calLoader() {
+          const cal = window.Cal;
+          const args = arguments;
+
+          if (!cal.loaded) {
+            cal.ns = {};
+            cal.q = cal.q || [];
+            const script = document.createElement('script');
+            script.src = CAL_SCRIPT_SRC;
+            document.head.appendChild(script);
+            cal.loaded = true;
+          }
+
+          if (args[0] === 'init') {
+            const namespace = args[1];
+            const api = function namespaceApi() {
+              queue(api, arguments);
+            };
+
+            api.q = api.q || [];
+
+            if (typeof namespace === 'string') {
+              cal.ns[namespace] = cal.ns[namespace] || api;
+              queue(cal.ns[namespace], args);
+              queue(cal, ['initNamespace', namespace]);
+            } else {
+              queue(cal, args);
+            }
+
+            return;
+          }
+
+          queue(cal, args);
+        };
+    };
+
+    queueCalBootstrap();
+    bootstrapCal();
 
     return () => {
-      isCancelled = true;
-
-      if (scriptNode) {
-        scriptNode.removeEventListener('load', initializeCal);
-      }
-
-      if (existingScript) {
-        existingScript.removeEventListener('load', initializeCal);
-      }
+      container.innerHTML = '';
     };
   }, []);
 
@@ -140,22 +161,19 @@ export default function ContactPage() {
       </section>
 
       <section className="pageSection">
-        <div className="ctaPanel ctaPanel--calendar reveal">
-          <div className="ctaPanel__copy">
-            <p className="sectionHeading__eyebrow">Reach out</p>
-            <h2 className="sectionHeading__title">
-              Book time directly in the calendar and bring the workflow summary
-              or business problem to the call.
-            </h2>
-            <p className="sectionHeading__body">
-              Pick a slot below. If you prefer to share context before the
-              meeting, send it to hello@criyx.com.
-            </p>
-          </div>
+        <div className="sectionHeading reveal">
+          <p className="sectionHeading__eyebrow">Reach out</p>
+          <h2 className="sectionHeading__title">
+            Book time directly in the calendar.
+          </h2>
+          <p className="sectionHeading__body">
+            The scheduler is placed below in its own full-width section. If you
+            want to send context before the call, email hello@criyx.com.
+          </p>
+        </div>
+        <div className="calEmbedPanel reveal reveal--delay-1">
           <div className="calEmbed" id={CAL_CONTAINER_ID}>
-            <p className="calEmbed__fallback">
-              Loading calendar...
-            </p>
+            <p className="calEmbed__fallback">Loading calendar...</p>
           </div>
         </div>
       </section>

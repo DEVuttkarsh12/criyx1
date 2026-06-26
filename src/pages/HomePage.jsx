@@ -1,6 +1,7 @@
 import { useEffect, useId, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
-import founderPortrait from '../assets/founder-dikshant-portrait.jpeg';
+import founderDebarshiPortrait from '../assets/founder-debarshi-chaudhuri-portrait.avif';
+import founderDikshantPortrait from '../assets/founder-dikshant-portrait.jpeg';
 import LogoLoop from '../components/LogoLoop';
 import StaggeredMenu from '../components/StaggeredMenu';
 import TechnologyIcon from '../components/TechnologyIcon';
@@ -24,14 +25,12 @@ const heroTitleLines = [
 ];
 
 const founderSignals = [
-  'Entrepreneur',
-  'AI Solutions Architect',
-  'Founder @criyx.ai',
+  'AI systems for real operations',
+  'Full-stack product execution',
+  'QA and workflow automation',
 ];
 
-const founderTitle = 'Meet Dikshant Vashisth, the founder behind Criyx.';
-const founderQuote =
-  'AI should improve the way a business actually operates, not just look impressive in a pitch.';
+const founderTitle = 'Meet the founders building Criyx.';
 const panelDescriptions = {
   Services: {
     'Workflow Automation': 'Systemized automations for ops-heavy handoffs.',
@@ -319,7 +318,7 @@ export default function HomePage() {
       >
         <div className="founderFeature__layout">
           <div className="founderFeature__copy">
-            <p className="founderFeature__eyebrow reveal">From the Founder</p>
+            <p className="founderFeature__eyebrow reveal">Founding Team</p>
             <h2
               className="founderFeature__title reveal reveal--delay-1"
               id="founder-feature-title"
@@ -331,19 +330,24 @@ export default function HomePage() {
               />
             </h2>
             <p className="founderFeature__body reveal reveal--delay-2">
-              Entrepreneur. AI Solutions Architect. The face behind Criyx.
-              Dikshant is building the company around a simple standard: AI
-              should improve the way a business actually operates, not just
-              look impressive in a pitch.
+              Criyx is being built by two complementary operators. Dikshant
+              leads the AI architecture, workflow thinking, and system design
+              standard behind the company. Debarshi brings the build side of
+              that equation with a product engineering background shaped by
+              full-stack delivery, QA and product analysis, automation testing,
+              and workflow execution across startup environments.
             </p>
             <p className="founderFeature__body reveal reveal--delay-3">
-              That is what Criyx is meant to stand for: sharper workflow
-              design, cleaner decision paths, and systems that stay useful once
-              real operators, exceptions, and scale enter the picture.
+              Together they are building Criyx around one operating principle:
+              useful AI should reduce friction, improve decisions, and remain
+              reliable once real operators, exceptions, and scale enter the
+              workflow. That balance matters because strong systems are not only
+              imagined well, they are built right, tested thoroughly, and made
+              practical for the team using them every day.
             </p>
             <div
               className="founderFeature__principles reveal reveal--delay-4"
-              aria-label="Founder signals"
+              aria-label="Founding team strengths"
             >
               {founderSignals.map((principle) => (
                 <span className="founderFeature__principle" key={principle}>
@@ -354,37 +358,59 @@ export default function HomePage() {
           </div>
 
           <div className="founderFeature__visual reveal reveal--delay-2">
-            <figure className="founderFeature__portraitComposition">
-              <div className="founderFeature__portraitPlate" aria-hidden="true" />
-              <div className="founderFeature__portraitPlaceholder">
-                <span className="founderFeature__portraitKicker">Founder / Criyx</span>
-                <img
-                  alt="Dikshant Vashisth, founder of Criyx"
-                  className="founderFeature__portraitImage"
-                  src={founderPortrait}
-                />
-                <figcaption className="founderFeature__portraitCaption">
-                  <span className="founderFeature__portraitName">Dikshant Vashisth</span>
-                  <span className="founderFeature__portraitRole">
-                    Founder • AI Solutions Architect
+            <figure className="founderFeature__portraitStage">
+              <div className="founderFeature__portraitSplit">
+                <div className="founderFeature__portraitPane">
+                  <img
+                    alt="Dikshant Vashisth, founder of Criyx"
+                    className="founderFeature__portraitImage"
+                    src={founderDikshantPortrait}
+                    style={{ objectPosition: 'center 12%' }}
+                  />
+                </div>
+
+                <div className="founderFeature__portraitPane">
+                  <img
+                    alt="Debarshi Chaudhuri, founder of Criyx"
+                    className="founderFeature__portraitImage"
+                    src={founderDebarshiPortrait}
+                    style={{ objectPosition: 'center 16%' }}
+                  />
+                </div>
+              </div>
+
+              <figcaption className="founderFeature__portraitRail">
+                <div className="founderFeature__portraitIdentity">
+                  <span className="founderFeature__portraitKicker">
+                    Founder / Strategy
                   </span>
-                </figcaption>
-              </div>
+                  <span className="founderFeature__portraitName">
+                    Dikshant Vashisth
+                  </span>
+                  <span className="founderFeature__portraitRole">
+                    AI Solutions Architect
+                  </span>
+                </div>
 
-              <blockquote className="founderFeature__quoteCard reveal reveal--delay-3">
-                <p className="founderFeature__quoteText">“{founderQuote}”</p>
-                <p className="founderFeature__quoteMeta">Guiding principle behind Criyx</p>
-              </blockquote>
+                <div className="founderFeature__portraitIdentity">
+                  <span className="founderFeature__portraitKicker">
+                    Founder / Execution
+                  </span>
+                  <span className="founderFeature__portraitName">
+                    Debarshi Chaudhuri
+                  </span>
+                  <span className="founderFeature__portraitRole">
+                    Product Engineer • QA & Automation
+                  </span>
+                </div>
+              </figcaption>
 
-              <div
-                className="founderFeature__noteCard reveal reveal--delay-4"
-                aria-hidden="true"
-              >
-                <span className="founderFeature__noteLabel">Operator note</span>
-                <span className="founderFeature__noteValue">
-                  Built for execution, not presentation theater.
-                </span>
-              </div>
+              <p className="founderFeature__stageLine">
+                Dikshant shapes the AI architecture and workflow direction.
+                Debarshi brings the execution discipline behind it: full-stack
+                product building, rigorous QA, automation workflows, and the
+                ability to turn fast-moving ideas into dependable systems.
+              </p>
             </figure>
           </div>
         </div>

@@ -1283,7 +1283,7 @@ a {
   position: relative;
   z-index: 1;
   display: grid;
-  grid-template-columns: minmax(0, 1.08fr) minmax(320px, 0.78fr);
+  grid-template-columns: minmax(0, 0.94fr) minmax(460px, 0.96fr);
   align-items: center;
   gap: clamp(28px, 4vw, 56px);
   padding: 42px 0 0;
@@ -1383,98 +1383,65 @@ a {
 .founderFeature__visual {
   position: relative;
   min-width: 0;
-  padding: 12px 0 46px;
+  padding: 12px 0 10px;
 }
 
 .founderFeature__visual::before {
   content: "";
   position: absolute;
-  inset: 1% -6% -8% 8%;
-  border-radius: 40px;
+  inset: 10% -4% -8% 6%;
+  border-radius: 32px;
   background:
-    radial-gradient(circle at top right, rgba(198, 92, 55, 0.24), transparent 34%),
-    radial-gradient(circle at bottom left, rgba(255, 255, 255, 0.08), transparent 28%);
-  filter: blur(24px);
-  opacity: 0.9;
+    radial-gradient(circle at 18% 18%, rgba(198, 92, 55, 0.12), transparent 26%),
+    radial-gradient(circle at 82% 78%, rgba(255, 255, 255, 0.05), transparent 22%);
+  filter: blur(30px);
+  opacity: 0.75;
   pointer-events: none;
 }
 
-.founderFeature__portraitComposition {
+.founderFeature__portraitStage {
   position: relative;
   margin: 0;
   display: grid;
-  justify-items: end;
+  gap: 18px;
 }
 
-.founderFeature__portraitPlate {
-  position: absolute;
-  top: 26px;
-  right: 26px;
-  bottom: 64px;
-  left: 74px;
-  border: 1px solid rgba(255, 214, 184, 0.14);
-  border-radius: 34px;
-  background:
-    linear-gradient(180deg, rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0.01)),
-    radial-gradient(circle at top, rgba(198, 92, 55, 0.12), transparent 50%),
-    rgba(14, 10, 8, 0.54);
-  box-shadow:
-    0 32px 90px -60px rgba(0, 0, 0, 0.98),
-    inset 0 1px 0 rgba(255, 255, 255, 0.04);
-  pointer-events: none;
+.founderFeature__portraitSplit {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+  min-height: clamp(380px, 41vw, 560px);
 }
 
-.founderFeature__portraitPlaceholder {
+.founderFeature__portraitPane {
   position: relative;
-  width: min(100%, 438px);
-  min-height: clamp(420px, 50vw, 640px);
-  border: 1px solid rgba(255, 214, 184, 0.14);
-  border-radius: 34px;
-  background:
-    linear-gradient(180deg, rgba(255, 255, 255, 0.032) 0%, rgba(255, 255, 255, 0.008) 100%),
-    radial-gradient(circle at top left, rgba(198, 92, 55, 0.14), transparent 42%),
-    rgba(15, 11, 9, 0.68);
-  box-shadow:
-    0 52px 110px -58px rgba(0, 0, 0, 0.98),
-    0 0 0 1px rgba(255, 255, 255, 0.018),
-    inset 0 1px 0 rgba(255, 255, 255, 0.04);
+  min-height: inherit;
   overflow: hidden;
-  z-index: 1;
+  border-radius: 22px;
+  background: rgba(11, 8, 7, 0.78);
 }
 
-.founderFeature__portraitPlaceholder::before {
+.founderFeature__portraitPane::after {
   content: "";
   position: absolute;
-  inset: 18px;
-  border: 1px dashed rgba(255, 214, 184, 0.2);
-  border-radius: 24px;
-  z-index: 1;
-}
-
-.founderFeature__portraitPlaceholder::after {
-  content: "";
-  position: absolute;
-  inset: auto 24px 24px;
-  height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.14), transparent);
-  z-index: 1;
+  inset: auto 0 0;
+  height: 44%;
+  background: linear-gradient(180deg, transparent, rgba(10, 7, 6, 0.9));
+  z-index: 0;
 }
 
 .founderFeature__portraitKicker {
-  position: absolute;
-  top: 26px;
-  left: 28px;
-  z-index: 2;
   display: inline-flex;
   align-items: center;
-  min-height: 34px;
-  padding: 0 14px;
+  min-height: 28px;
+  width: fit-content;
+  padding: 0 11px;
   border: 1px solid rgba(255, 214, 184, 0.16);
   border-radius: 999px;
-  background: rgba(14, 10, 8, 0.52);
+  background: rgba(17, 12, 9, 0.62);
   color: rgba(255, 244, 236, 0.86);
   font-family: var(--font-family-display);
-  font-size: 11px;
+  font-size: 10px;
   font-weight: 600;
   letter-spacing: 0.18em;
   text-transform: uppercase;
@@ -1485,114 +1452,49 @@ a {
   display: block;
   width: 100%;
   height: 100%;
-  min-height: inherit;
   object-fit: cover;
-  object-position: center 12%;
   filter: saturate(0.98) contrast(1.04);
 }
 
-.founderFeature__portraitCaption {
-  position: absolute;
-  left: 28px;
-  bottom: 34px;
-  z-index: 1;
+.founderFeature__portraitRail {
   display: grid;
-  gap: 6px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+  padding: 18px 0 0;
+  margin: 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.founderFeature__portraitIdentity {
+  display: grid;
+  gap: 8px;
+  min-width: 0;
 }
 
 .founderFeature__portraitName {
   color: rgba(255, 240, 232, 0.82);
   font-family: var(--font-family-display);
-  font-size: 14px;
+  font-size: 17px;
   font-weight: 600;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.02em;
   text-transform: uppercase;
-  text-shadow: 0 12px 24px rgba(0, 0, 0, 0.45);
 }
 
 .founderFeature__portraitRole {
   color: rgba(255, 240, 232, 0.66);
   font-size: 12px;
   font-weight: 500;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
-  text-shadow: 0 12px 24px rgba(0, 0, 0, 0.45);
 }
 
-.founderFeature__quoteCard {
-  position: absolute;
-  left: 0;
-  bottom: 0;
-  z-index: 2;
-  width: min(300px, calc(100% - 72px));
+.founderFeature__stageLine {
   margin: 0;
-  padding: 20px 22px;
-  border: 1px solid rgba(255, 214, 184, 0.16);
-  border-radius: 24px;
-  background:
-    linear-gradient(180deg, rgba(255, 255, 255, 0.045) 0%, rgba(255, 255, 255, 0.015) 100%),
-    rgba(16, 11, 9, 0.82);
-  box-shadow:
-    0 28px 70px -44px rgba(0, 0, 0, 0.98),
-    inset 0 1px 0 rgba(255, 255, 255, 0.035);
-  backdrop-filter: blur(18px);
-}
-
-.founderFeature__quoteText,
-.founderFeature__quoteMeta {
-  margin: 0;
-}
-
-.founderFeature__quoteText {
-  color: rgba(255, 244, 236, 0.9);
-  font-family: var(--font-family-display);
-  font-size: 18px;
-  line-height: 1.55;
-  letter-spacing: -0.03em;
-}
-
-.founderFeature__quoteMeta {
-  margin-top: 12px;
-  color: rgba(255, 224, 204, 0.54);
-  font-size: 11px;
-  font-weight: 600;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-}
-
-.founderFeature__noteCard {
-  position: absolute;
-  top: 34px;
-  right: -28px;
-  z-index: 2;
-  display: grid;
-  gap: 8px;
-  width: min(196px, 40%);
-  padding: 16px 18px;
-  border: 1px solid rgba(255, 214, 184, 0.14);
-  border-radius: 20px;
-  background:
-    linear-gradient(180deg, rgba(255, 255, 255, 0.04) 0%, rgba(255, 255, 255, 0.012) 100%),
-    rgba(17, 12, 9, 0.74);
-  box-shadow:
-    0 18px 48px -32px rgba(0, 0, 0, 0.98),
-    inset 0 1px 0 rgba(255, 255, 255, 0.032);
-  backdrop-filter: blur(18px);
-}
-
-.founderFeature__noteLabel {
-  color: rgba(255, 224, 204, 0.54);
-  font-family: var(--font-family-display);
-  font-size: 10px;
-  font-weight: 700;
-  letter-spacing: 0.22em;
-  text-transform: uppercase;
-}
-
-.founderFeature__noteValue {
-  color: rgba(255, 242, 235, 0.82);
-  font-size: 13px;
-  line-height: 1.6;
+  max-width: 60ch;
+  padding: 0;
+  color: rgba(255, 244, 236, 0.76);
+  font-size: 14px;
+  line-height: 1.75;
 }
 
 .explorePages {
@@ -2990,19 +2892,12 @@ a {
     padding-bottom: 26px;
   }
 
-  .founderFeature__portraitPlate {
-    left: 42px;
-    right: 18px;
-    bottom: 42px;
+  .founderFeature__portraitStage {
+    gap: 16px;
   }
 
-  .founderFeature__portraitPlaceholder {
-    width: min(100%, 520px);
+  .founderFeature__portraitPane {
     min-height: 520px;
-  }
-
-  .founderFeature__quoteCard {
-    width: min(320px, calc(100% - 48px));
   }
 
   .explorePages {
@@ -3190,28 +3085,26 @@ a {
     padding-bottom: 0;
   }
 
-  .founderFeature__portraitComposition {
-    justify-items: stretch;
+  .founderFeature__portraitStage {
+    gap: 14px;
+  }
+
+  .founderFeature__portraitSplit {
+    grid-template-columns: minmax(0, 1fr);
     gap: 16px;
+    min-height: 0;
   }
 
-  .founderFeature__portraitPlate {
-    top: 18px;
-    right: 12px;
-    bottom: 96px;
-    left: 20px;
-    border-radius: 26px;
-  }
-
-  .founderFeature__portraitPlaceholder {
+  .founderFeature__portraitPane {
     width: 100%;
-    min-height: 420px;
+    min-height: 400px;
     border-radius: 26px;
   }
 
-  .founderFeature__portraitPlaceholder::before {
-    inset: 14px;
-    border-radius: 18px;
+  .founderFeature__portraitRail {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 16px;
+    padding: 16px 0 0;
   }
 
   .founderFeature__portraitKicker {
@@ -3222,11 +3115,6 @@ a {
     font-size: 10px;
   }
 
-  .founderFeature__portraitCaption {
-    left: 22px;
-    bottom: 26px;
-  }
-
   .founderFeature__portraitName {
     font-size: 13px;
   }
@@ -3235,23 +3123,8 @@ a {
     font-size: 11px;
   }
 
-  .founderFeature__quoteCard,
-  .founderFeature__noteCard {
-    position: relative;
-    inset: auto;
-    width: 100%;
-  }
-
-  .founderFeature__quoteCard {
-    padding: 18px 18px 20px;
-  }
-
-  .founderFeature__quoteText {
-    font-size: 16px;
-  }
-
-  .founderFeature__noteCard {
-    padding: 14px 16px;
+  .founderFeature__stageLine {
+    font-size: 13px;
   }
 
   .explorePages__body {
